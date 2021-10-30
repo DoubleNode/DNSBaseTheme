@@ -9,8 +9,8 @@
 import UIKit
 
 public extension UIImage {
-    static func barcode(from code: String,
-                        scale: CGFloat = 3) -> UIImage? {
+    public static func barcode(from code: String,
+                               scale: CGFloat = 3) -> UIImage? {
         guard !code.isEmpty else { return nil }
         let data = code.data(using: String.Encoding.ascii)
         if let filter = CIFilter(name: "CICode128BarcodeGenerator") {

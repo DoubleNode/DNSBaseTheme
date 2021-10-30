@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UIAlertController {
-    func dnsShow(window: UIWindow) {
+public extension UIAlertController {
+    public func dnsShow(window: UIWindow) {
         guard !self.isBeingPresented else { return }
         window.makeKeyAndVisible()
         window.rootViewController?.present(self, animated: true, completion: nil)
     }
-    func dnsHide(window: UIWindow) {
+    public func dnsHide(window: UIWindow) {
         window.isHidden = true
     }
 }

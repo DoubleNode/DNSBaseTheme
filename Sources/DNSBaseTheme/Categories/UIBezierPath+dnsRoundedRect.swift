@@ -9,12 +9,11 @@
 import UIKit
 
 public extension UIBezierPath {
-
-    convenience init(shouldRoundRect rect: CGRect,
-                     topLeftRadius: CGFloat,
-                     topRightRadius: CGFloat,
-                     bottomLeftRadius: CGFloat,
-                     bottomRightRadius: CGFloat) {
+    public convenience init(shouldRoundRect rect: CGRect,
+                            topLeftRadius: CGFloat,
+                            topRightRadius: CGFloat,
+                            bottomLeftRadius: CGFloat,
+                            bottomRightRadius: CGFloat) {
         self.init()
 
         let path = CGMutablePath()

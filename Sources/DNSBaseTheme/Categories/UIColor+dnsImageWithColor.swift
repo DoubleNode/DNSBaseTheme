@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIColor {
-    func imageWithColor(width: Int, height: Int) -> UIImage {
+    public func imageWithColor(width: Int, height: Int) -> UIImage {
         let size = CGSize(width: width, height: height)
         return UIGraphicsImageRenderer(size: size).image { rendererContext in
             self.setFill()

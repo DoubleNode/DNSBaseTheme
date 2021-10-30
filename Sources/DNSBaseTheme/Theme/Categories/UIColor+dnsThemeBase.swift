@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIColor {
-    enum Base {
+    public enum Base {
         public static var border = UIColor.clear
         public static var shadow = UIColor.clear
         public enum Button {

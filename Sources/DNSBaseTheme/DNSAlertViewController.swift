@@ -11,7 +11,7 @@ import UIKit
 final public class DNSAlertViewController: UIViewController {
     /// This creates a retain cycle.
     /// This is needed to retain the UIAlertController in iOS 13.0+
-    var retainedWindow: UIWindow?
+    public var retainedWindow: UIWindow?
     deinit {
         retainedWindow = nil
     }

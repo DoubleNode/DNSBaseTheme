@@ -9,11 +9,11 @@
 import UIKit
 
 public extension UIView {
-    var visible: Bool! {
+    public var visible: Bool! {
         return !(self.window == nil && self.superview == nil)
     }
 
-    var origin: CGPoint! {
+    public var origin: CGPoint! {
         get {
             return self.frame.origin
         }
@@ -24,7 +24,7 @@ public extension UIView {
                                 height: self.frame.size.height)
         }
     }
-    var x: CGFloat! {
+    public var x: CGFloat! {
         get {
             return self.frame.origin.x
         }
@@ -35,7 +35,7 @@ public extension UIView {
                                 height: self.frame.size.height)
         }
     }
-    var y: CGFloat! {
+    public var y: CGFloat! {
         get {
             return self.frame.origin.y
         }
@@ -46,7 +46,7 @@ public extension UIView {
                                 height: self.frame.size.height)
         }
     }
-    var size: CGSize! {
+    public var size: CGSize! {
         get {
             return self.frame.size
         }
@@ -57,7 +57,7 @@ public extension UIView {
                                 height: newSize.height)
         }
     }
-    var width: CGFloat! {
+    public var width: CGFloat! {
         get {
             return self.frame.size.width
         }
@@ -68,7 +68,7 @@ public extension UIView {
                                 height: self.frame.size.height)
         }
     }
-    var height: CGFloat! {
+    public var height: CGFloat! {
         get {
             return self.frame.size.height
         }

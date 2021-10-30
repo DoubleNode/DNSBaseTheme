@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UITextField {
-    @IBInspectable var placeholderColor: UIColor {
+public extension UITextField {
+    @IBInspectable public var placeholderColor: UIColor {
         get {
             return attributedPlaceholder?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor ?? .clear
         }

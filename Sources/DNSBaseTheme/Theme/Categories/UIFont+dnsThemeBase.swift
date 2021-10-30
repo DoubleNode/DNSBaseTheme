@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIFont {
-    enum Base {
+    public enum Base {
         public enum Button {
             public static var subtitle = UIFont(name: "System", size: 12)
             public static var title = UIFont(name: "System", size: 15)
