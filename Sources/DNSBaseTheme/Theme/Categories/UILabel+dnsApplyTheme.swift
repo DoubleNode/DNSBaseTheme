@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UILabel {
-    public func dnsApply(_ style: DNSThemeLabelStyle) {
+    func dnsApply(_ style: DNSThemeLabelStyle) {
         // UIViewStyle
         self.backgroundColor = style.backgroundColor.normal
         self.layer.borderColor = style.border.color.normal.cgColor

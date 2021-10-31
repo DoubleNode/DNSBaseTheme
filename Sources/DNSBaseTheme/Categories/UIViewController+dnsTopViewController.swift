@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIViewController {
-    public var dnsTopViewController: UIViewController {
+    var dnsTopViewController: UIViewController {
         switch self {
         case is UINavigationController:
             // swiftlint:disable:next force_cast

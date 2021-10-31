@@ -10,7 +10,7 @@ import DNSCore
 import UIKit
 
 public extension UIFont {
-    public class func dnsFrom(_ font: DNSUIFont) -> UIFont {
-        return dnsCustom(with: font.fontName, and: CGFloat(font.size))
+    class func dnsFrom(_ dnsFont: DNSUIFont) -> UIFont {
+        return dnsFont.font
     }
 }

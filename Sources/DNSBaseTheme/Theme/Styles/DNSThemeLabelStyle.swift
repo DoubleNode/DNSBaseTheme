@@ -13,13 +13,13 @@ open class DNSThemeLabelStyle: DNSThemeViewStyle {
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
     
-    public init(color: DNSUIColor = DNSUIColor(UIColor.label),
-                font: DNSUIFont = DNSUIFont(),
+    public init(color: DNSUIColor = DNSUIColor(UIColor.Base.label),
+                font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
                 shadow: DNSUIShadow = DNSUIShadow(),
-                backgroundColor: DNSUIColor = DNSUIColor(UIColor.systemBackground),
+                backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                 border: DNSUIBorder = DNSUIBorder(),
-                tintColor: DNSUIColor = DNSUIColor(UIColor.systemBlue)) {
+                tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         self.color = color
         self.font = font
         self.paragraphStyle = paragraphStyle

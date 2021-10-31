@@ -14,10 +14,10 @@ open class DNSThemeViewStyle: DNSThemeStyle {
     public var shadow: DNSUIShadow
     public var tintColor: DNSUIColor
     
-    public init(backgroundColor: DNSUIColor = DNSUIColor(UIColor.systemBackground),
+    public init(backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                 border: DNSUIBorder = DNSUIBorder(),
                 shadow: DNSUIShadow = DNSUIShadow(),
-                tintColor: DNSUIColor = DNSUIColor(UIColor.systemBlue)) {
+                tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         self.backgroundColor = backgroundColor
         self.border = border
         self.shadow = shadow

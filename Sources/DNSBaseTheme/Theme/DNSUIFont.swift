@@ -9,20 +9,24 @@
 import UIKit
 
 open class DNSUIFont {
-    public var fontName: String
-    public var size: Double
+    public var font: UIFont
     
-    required public init(fontName: String = "System",
-                         size: Double = 15) {
-        self.fontName = fontName
-        self.size = size
+    required public init(_ font: UIFont) {
+        self.font = font
     }
 }
 public extension DNSUIFont {
     enum Base {
+        public static var label = DNSUIFont(UIFont.Base.label)
         public enum Button {
-            public static var subtitle = DNSUIFont(fontName: "System", size: 12)
-            public static var title = DNSUIFont(fontName: "System", size: 15)
+            public static var subtitle = DNSUIFont(UIFont.Base.Button.subtitle)
+            public static var title = DNSUIFont(UIFont.Base.Button.title)
+        }
+        public enum Field {
+            public static var alert = DNSUIFont(UIFont.Base.Field.alert)
+            public static var counter = DNSUIFont(UIFont.Base.Field.counter)
+            public static var text = DNSUIFont(UIFont.Base.Field.text)
+            public static var title = DNSUIFont(UIFont.Base.Field.title)
         }
     }
 }

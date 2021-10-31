@@ -9,9 +9,12 @@
 import UIKit
 
 public extension UIColor {
-    public enum Base {
+    enum Base {
+        public static var background = UIColor.systemBackground
         public static var border = UIColor.clear
+        public static var label = UIColor.label
         public static var shadow = UIColor.clear
+        public static var tint = UIColor.systemBlue
         public enum Button {
             public enum Background {
                 public static var disabled = UIColor.clear
@@ -71,6 +74,14 @@ public extension UIColor {
                     public static var selected = UIColor.clear
                 }
             }
+        }
+        public enum Field {
+            public static var alert = UIColor.systemRed
+            public static var counter = UIColor.quaternaryLabel
+            public static var highlight = UIColor.systemBlue
+            public static var line = UIColor.tertiaryLabel
+            public static var text = UIColor.label
+            public static var title = UIColor.tertiaryLabel
         }
     }
 }

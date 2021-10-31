@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UITextField {
-    @IBInspectable public var placeholderColor: UIColor {
+    @IBInspectable var placeholderColor: UIColor {
         get {
             return attributedPlaceholder?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor ?? .clear
         }

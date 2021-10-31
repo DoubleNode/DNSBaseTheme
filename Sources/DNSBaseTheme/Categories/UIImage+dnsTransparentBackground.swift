@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImage {
-    public func dnsTransparentBackground() -> UIImage? {
+    func dnsTransparentBackground() -> UIImage? {
         let context = CIContext(options: nil)
         let filter = CIFilter(name: "CIMaskToAlpha")
         filter?.setDefaults()

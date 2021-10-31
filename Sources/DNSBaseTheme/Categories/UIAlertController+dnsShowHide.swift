@@ -9,12 +9,12 @@
 import UIKit
 
 public extension UIAlertController {
-    public func dnsShow(window: UIWindow) {
+    func dnsShow(window: UIWindow) {
         guard !self.isBeingPresented else { return }
         window.makeKeyAndVisible()
         window.rootViewController?.present(self, animated: true, completion: nil)
     }
-    public func dnsHide(window: UIWindow) {
+    func dnsHide(window: UIWindow) {
         window.isHidden = true
     }
 }

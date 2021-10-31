@@ -29,7 +29,9 @@ open class DNSUIColor {
 }
 public extension DNSUIColor {
     enum Base {
+        public static var background = DNSUIColor(UIColor.Base.background)
         public static var border = DNSUIColor(UIColor.Base.border)
+        public static var label = DNSUIColor(UIColor.Base.label)
         public static var shadow = DNSUIColor(UIColor.Base.shadow)
         public enum Button {
             public static var background = DNSUIColor(UIColor.Base.Button.Background.normal,
@@ -72,6 +74,14 @@ public extension DNSUIColor {
                                                        focused: UIColor.Base.Button.Title.Shadow.focused,
                                                        highlighted: UIColor.Base.Button.Title.Shadow.highlighted,
                                                        selected: UIColor.Base.Button.Title.Shadow.selected)
+        }
+        public enum Field {
+            public static var alert = DNSUIColor(UIColor.Base.Field.alert)
+            public static var counter = DNSUIColor(UIColor.Base.Field.counter)
+            public static var highlight = DNSUIColor(UIColor.Base.Field.highlight)
+            public static var line = DNSUIColor(UIColor.Base.Field.line)
+            public static var text = DNSUIColor(UIColor.Base.Field.text)
+            public static var title = DNSUIColor(UIColor.Base.Field.title)
         }
     }
 }

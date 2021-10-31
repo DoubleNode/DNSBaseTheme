@@ -1,15 +1,15 @@
 //
-//  DNSBaseStageTests.swift
-//  DoubleNode Swift Framework (DNSFramework) - DNSBaseStageTests
+//  DNSBaseThemeTests.swift
+//  DoubleNode Swift Framework (DNSFramework) - DNSBaseThemeTests
 //
 //  Created by Darren Ehlers.
 //  Copyright © 2020 - 2016 DoubleNode.com. All rights reserved.
 //
 
 import XCTest
-@testable import DNSBaseStage
+@testable import DNSBaseTheme
 
-final class DNSBaseStageTests: XCTestCase {
+final class DNSBaseThemeTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct

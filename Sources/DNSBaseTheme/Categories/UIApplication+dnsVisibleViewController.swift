@@ -10,7 +10,7 @@ import DNSCoreThreading
 import UIKit
 
 public extension UIApplication {
-    public var dnsVisibleViewController : UIViewController? {
+    var dnsVisibleViewController : UIViewController? {
         var retval: UIViewController?
         DNSUIThread.run(.synchronously) {
             retval = self.keyWindow?.rootViewController?.dnsTopViewController

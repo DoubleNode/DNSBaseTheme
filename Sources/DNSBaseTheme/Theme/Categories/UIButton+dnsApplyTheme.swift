@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIButton {
-    public func dnsApply(_ style: DNSThemeButtonStyle) {
+    func dnsApply(_ style: DNSThemeButtonStyle) {
         // UIViewStyle
         self.backgroundColor = style.backgroundColor.normal
         self.layer.borderColor = style.border.color.normal.cgColor
