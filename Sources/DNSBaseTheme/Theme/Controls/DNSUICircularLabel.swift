@@ -27,11 +27,11 @@ import UIKit
     //          More complete definition: http://www.mathsisfun.com/sine-cosine-tangent.html
     // cosine: Also takes an angle in degrees and gives you another number from using the two radiuses (radii).
     // *******************************************************
-
     @IBInspectable var angle: CGFloat = 1.6
     @IBInspectable var clockwise: Bool = true
 
     override open func draw(_ rect: CGRect) {
+        super.draw(rect)
         centreArcPerpendicular()
     }
 
@@ -79,7 +79,6 @@ import UIKit
             thetaI += direction * arcs[index] / 2
         }
     }
-
     func chordToArc(_ chord: CGFloat,
                     radius: CGFloat) -> CGFloat {
         // *******************************************************
@@ -120,7 +119,6 @@ import UIKit
         // Restore the context
         context.restoreGState()
     }
-
     func getRadiusForLabel() -> CGFloat {
         // Imagine the bounds of this label will have a circle inside it.
         // The circle will be as big as the smallest width or height of this label.
@@ -132,5 +130,4 @@ import UIKit
         // Dividing the smallestWidthOrHeight by 2 gives us the radius for the circle.
         return (smallestWidthOrHeight/2) - heightOfFont + 5
     }
-
 }

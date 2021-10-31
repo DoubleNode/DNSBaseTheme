@@ -9,6 +9,8 @@
 import UIKit
 
 open class DNSThemeFieldStyle: DNSThemeStyle {
+    public static var `default`: DNSThemeFieldStyle = DNSThemeFieldStyle.Base.default
+    
     public var alertColor: DNSUIColor
     public var alertFont: DNSUIFont
     public var counterColor: DNSUIColor

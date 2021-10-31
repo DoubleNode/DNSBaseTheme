@@ -9,13 +9,15 @@
 import UIKit
 
 open class DNSThemeButtonStyle: DNSThemeStyle {
+    public static var `default`: DNSThemeButtonStyle = DNSThemeButtonStyle.Base.default
+
     public var subtitleColor: DNSUIColor
     public var subtitleFont: DNSUIFont
     public var subtitleShadow: DNSUIShadow
     public var titleColor: DNSUIColor
     public var titleFont: DNSUIFont
     public var titleShadow: DNSUIShadow
-    
+
     public init(titleColor: DNSUIColor = DNSUIColor.Base.Button.title,
                 titleFont: DNSUIFont = DNSUIFont.Base.Button.title,
                 titleShadow: DNSUIShadow = DNSUIShadow.Base.Button.title,

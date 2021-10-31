@@ -12,7 +12,7 @@
 import UIKit
 
 @IBDesignable open class DNSUIButton: UIButton {
-    public var style: DNSThemeStyle? {
+    public var style: DNSThemeStyle? = DNSThemeButtonStyle.default {
         didSet {
             guard let style = style else { return }
             self.utilityApply(style)
@@ -233,14 +233,16 @@ import UIKit
         // add subViews
         self.insertSubview(self.containerView, at: 0)
         self.containerView.addSubview(self.containerImageView)
-        
+
+        self.containerView.isUserInteractionEnabled = false
+        self.containerImageView.isUserInteractionEnabled = false
+
         // add image constraints
         self.containerImageView.translatesAutoresizingMaskIntoConstraints = false
         self.containerImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         self.containerImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         self.containerImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        self.containerImageView.isUserInteractionEnabled = false
 
         // add view constraints
         self.containerView.translatesAutoresizingMaskIntoConstraints = false

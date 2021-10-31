@@ -9,6 +9,8 @@
 import UIKit
 
 open class DNSThemeViewStyle: DNSThemeStyle {
+    public static var `default`: DNSThemeViewStyle = DNSThemeViewStyle.Base.default
+    
     override public init(backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),

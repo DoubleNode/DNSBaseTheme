@@ -9,6 +9,8 @@
 import UIKit
 
 open class DNSThemeLabelStyle: DNSThemeStyle {
+    public static var `default`: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.default
+    
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle

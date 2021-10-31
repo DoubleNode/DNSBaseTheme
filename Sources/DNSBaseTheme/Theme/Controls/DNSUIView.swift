@@ -12,7 +12,7 @@
 import UIKit
 
 @IBDesignable open class DNSUIView: UIView {
-    public var style: DNSThemeStyle? {
+    public var style: DNSThemeStyle? = DNSThemeLabelStyle.default {
         didSet {
             guard let style = style else { return }
             self.utilityApply(style)
@@ -195,19 +195,20 @@ import UIKit
         self.containerImageView.contentMode = .redraw
         self.containerImageView.isUserInteractionEnabled = false
     }
-
     private func addViewLayoutSubViews() {
         // add subViews
         self.insertSubview(self.containerView, at: 0)
         self.containerView.addSubview(self.containerImageView)
 
+        self.containerView.isUserInteractionEnabled = false
+        self.containerImageView.isUserInteractionEnabled = false
+        
         // add image constraints
         self.containerImageView.translatesAutoresizingMaskIntoConstraints = false
         self.containerImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         self.containerImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         self.containerImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        self.containerImageView.isUserInteractionEnabled = false
 
         // add view constraints
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -216,7 +217,6 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-
 //    private func addShadowColorFromBackgroundImage() {
 //        // Get the averageColor from the image for set the Shadow Color
 //        if shadowColorFormImage {
@@ -226,7 +226,6 @@ import UIKit
 //            }
 //        }
 //    }
-
     private func applyRadiusMaskFor() {
         guard cornerRadiusMulti else { return }
 
