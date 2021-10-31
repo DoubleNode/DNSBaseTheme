@@ -173,16 +173,17 @@ import UIKit
     // MARK: - Life Cycle -
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     override open func draw(_ rect: CGRect) {
-        self.utilityApply(style)
         super.draw(rect)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()

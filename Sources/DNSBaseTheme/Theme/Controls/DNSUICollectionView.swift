@@ -149,16 +149,17 @@ import UIKit
     override init(frame: CGRect,
                   collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
+        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     override open func draw(_ rect: CGRect) {
-        self.utilityApply(style)
         super.draw(rect)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
