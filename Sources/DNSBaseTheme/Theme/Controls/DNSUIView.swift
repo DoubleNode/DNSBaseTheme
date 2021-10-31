@@ -1,5 +1,5 @@
 //
-//  DNSUIButton.swift
+//  DNSUIView.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
 //
 //  Created by Darren Ehlers.
@@ -11,7 +11,7 @@
 
 import UIKit
 
-@IBDesignable open class DNSUIButton: UIButton {
+@IBDesignable open class DNSUIView: UIView {
     public var style: DNSThemeStyle? {
         didSet {
             guard let style = style else { return }
@@ -20,42 +20,27 @@ import UIKit
     }
     // MARK: - Utility Methods -
     open func utilityApply(_ style: DNSThemeStyle) {
-        if let style = style as? DNSThemeViewStyle {
-            self.backgroundColor = style.backgroundColor.normal
-            self.borderColor = style.border.color.normal
-            self.borderWidth = CGFloat(style.border.width)
-            self.cornerRadius = CGFloat(style.border.cornerRadius)
-            self.cornerTopLeftRadius = CGFloat(style.border.cornerTopLeftRadius)
-            self.cornerTopRightRadius = CGFloat(style.border.cornerTopRightRadius)
-            self.cornerBottomLeftRadius = CGFloat(style.border.cornerBottomLeftRadius)
-            self.cornerBottomRightRadius = CGFloat(style.border.cornerBottomRightRadius)
-            self.cornerRadiusMulti = style.border.cornerRadiusMulti
-            self.shadowColor = style.shadow.color.normal
-            self.shadowOffset = style.shadow.offset
-            self.shadowOpacity = Float(style.shadow.opacity)
-            self.shadowRadius = style.shadow.radius
-            self.tintColor = style.tintColor.normal
-        }
-        if let style = style as? DNSThemeButtonStyle {
-            self.setTitleColor(style.titleColor.normal, for: UIControl.State.normal)
-            self.setTitleColor(style.titleColor.disabled, for: UIControl.State.disabled)
-            self.setTitleColor(style.titleColor.focused, for: UIControl.State.focused)
-            self.setTitleColor(style.titleColor.highlighted, for: UIControl.State.highlighted)
-            self.setTitleColor(style.titleColor.selected, for: UIControl.State.selected)
-            self.titleLabel?.font = UIFont.dnsFrom(style.titleFont)
-            self.setTitleShadowColor(style.titleShadow.color.normal, for: UIControl.State.normal)
-            self.setTitleShadowColor(style.titleShadow.color.disabled, for: UIControl.State.disabled)
-            self.setTitleShadowColor(style.titleShadow.color.focused, for: UIControl.State.focused)
-            self.setTitleShadowColor(style.titleShadow.color.highlighted, for: UIControl.State.highlighted)
-            self.setTitleShadowColor(style.titleShadow.color.selected, for: UIControl.State.selected)
-        }
+        self.backgroundColor = style.backgroundColor.normal
+        self.borderColor = style.border.color.normal
+        self.borderWidth = CGFloat(style.border.width)
+        self.cornerRadius = CGFloat(style.border.cornerRadius)
+        self.cornerTopLeftRadius = CGFloat(style.border.cornerTopLeftRadius)
+        self.cornerTopRightRadius = CGFloat(style.border.cornerTopRightRadius)
+        self.cornerBottomLeftRadius = CGFloat(style.border.cornerBottomLeftRadius)
+        self.cornerBottomRightRadius = CGFloat(style.border.cornerBottomRightRadius)
+        self.cornerRadiusMulti = style.border.cornerRadiusMulti
+        self.shadowColor = style.shadow.color.normal
+        self.shadowOffset = style.shadow.offset
+        self.shadowOpacity = Float(style.shadow.opacity)
+        self.shadowRadius = style.shadow.radius
+        self.tintColor = style.tintColor.normal
     }
 
     // MARK: - Private Variables -
     private let containerView = UIView()
     private var containerImageView = UIImageView()
-    
-// MARK: - Public Attributes -
+
+    // MARK: - Public Attributes -
 //    @IBInspectable public var backgroundImage: UIImage? {
 //        get {
 //            return self.containerImageView.image
@@ -160,7 +145,7 @@ import UIKit
 //            addShadowColorFromBackgroundImage()
 //        }
 //    }
-    
+
     // MARK: - Life Cycle -
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -183,24 +168,24 @@ import UIKit
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
     }
-    
+
     // MARK: - Private Methods -
     private func refreshViewLayout() {
         // View
         self.clipsToBounds = true
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius
-        
+
         // Shadow
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOffset = shadowOffset
         self.layer.shadowRadius = shadowRadius
-        
+
         // Container View
         self.containerView.layer.masksToBounds = true
         self.containerView.layer.cornerRadius = cornerRadius
-        
+
         // Image View
         self.containerImageView.backgroundColor = UIColor.clear
         //self.containerImageView.image = backgroundImage
@@ -210,12 +195,12 @@ import UIKit
         self.containerImageView.contentMode = .redraw
         self.containerImageView.isUserInteractionEnabled = false
     }
-    
+
     private func addViewLayoutSubViews() {
         // add subViews
         self.insertSubview(self.containerView, at: 0)
         self.containerView.addSubview(self.containerImageView)
-        
+
         // add image constraints
         self.containerImageView.translatesAutoresizingMaskIntoConstraints = false
         self.containerImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -231,7 +216,7 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-    
+
 //    private func addShadowColorFromBackgroundImage() {
 //        // Get the averageColor from the image for set the Shadow Color
 //        if shadowColorFormImage {
@@ -241,10 +226,10 @@ import UIKit
 //            }
 //        }
 //    }
-    
+
     private func applyRadiusMaskFor() {
         guard cornerRadiusMulti else { return }
-        
+
         let path = UIBezierPath(shouldRoundRect: bounds,
                                 topLeftRadius: cornerTopLeftRadius,
                                 topRightRadius: cornerTopRightRadius,

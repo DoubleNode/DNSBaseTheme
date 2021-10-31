@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIView {
     func dnsApply(_ style: DNSThemeViewStyle) {
-        // UIViewStyle
+        // DNSThemeStyle
         self.backgroundColor = style.backgroundColor.normal
         self.layer.borderColor = style.border.color.normal.cgColor
         self.layer.borderWidth = CGFloat(style.border.width)
@@ -20,5 +20,6 @@ public extension UIView {
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
         self.tintColor = style.tintColor.normal
+        // DNSThemeViewStyle
     }
 }

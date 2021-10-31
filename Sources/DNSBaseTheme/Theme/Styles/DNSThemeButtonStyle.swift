@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class DNSThemeButtonStyle: DNSThemeViewStyle {
+open class DNSThemeButtonStyle: DNSThemeStyle {
     public var subtitleColor: DNSUIColor
     public var subtitleFont: DNSUIFont
     public var subtitleShadow: DNSUIShadow
@@ -36,5 +36,10 @@ open class DNSThemeButtonStyle: DNSThemeViewStyle {
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+    }
+}
+public extension DNSThemeButtonStyle {
+    enum Base {
+        public static var `default` = DNSThemeButtonStyle()
     }
 }

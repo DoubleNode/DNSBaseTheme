@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class DNSThemeLabelStyle: DNSThemeViewStyle {
+open class DNSThemeLabelStyle: DNSThemeStyle {
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
@@ -27,5 +27,10 @@ open class DNSThemeLabelStyle: DNSThemeViewStyle {
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+    }
+}
+public extension DNSThemeLabelStyle {
+    enum Base {
+        public static var `default` = DNSThemeLabelStyle()
     }
 }

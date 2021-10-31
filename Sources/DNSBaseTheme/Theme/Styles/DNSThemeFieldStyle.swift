@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class DNSThemeFieldStyle: DNSThemeViewStyle {
+open class DNSThemeFieldStyle: DNSThemeStyle {
     public var alertColor: DNSUIColor
     public var alertFont: DNSUIFont
     public var counterColor: DNSUIColor
@@ -48,5 +48,10 @@ open class DNSThemeFieldStyle: DNSThemeViewStyle {
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+    }
+}
+public extension DNSThemeFieldStyle {
+    enum Base {
+        public static var `default` = DNSThemeFieldStyle()
     }
 }

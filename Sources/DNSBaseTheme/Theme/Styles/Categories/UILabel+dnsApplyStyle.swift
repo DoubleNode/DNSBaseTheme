@@ -10,7 +10,7 @@ import UIKit
 
 public extension UILabel {
     func dnsApply(_ style: DNSThemeLabelStyle) {
-        // UIViewStyle
+        // DNSThemeStyle
         self.backgroundColor = style.backgroundColor.normal
         self.layer.borderColor = style.border.color.normal.cgColor
         self.layer.borderWidth = CGFloat(style.border.width)
@@ -20,8 +20,8 @@ public extension UILabel {
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
         self.tintColor = style.tintColor.normal
-        // UILabelStyle
-        self.font = UIFont.dnsFrom(style.font)
+        // DNSThemeLabelStyle
+        self.font = style.font.normal
         self.shadowColor = style.shadow.color.normal
         self.shadowOffset = style.shadow.offset
         self.textColor = style.color.normal

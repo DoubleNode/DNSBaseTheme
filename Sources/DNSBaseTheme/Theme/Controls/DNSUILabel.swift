@@ -1,5 +1,5 @@
 //
-//  DNSUIView.swift
+//  DNSUILabel.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
 //
 //  Created by Darren Ehlers.
@@ -11,7 +11,7 @@
 
 import UIKit
 
-@IBDesignable open class DNSUIView: UIView {
+@IBDesignable open class DNSUILabel: UILabel {
     public var style: DNSThemeStyle? {
         didSet {
             guard let style = style else { return }
@@ -20,29 +20,59 @@ import UIKit
     }
     // MARK: - Utility Methods -
     open func utilityApply(_ style: DNSThemeStyle) {
-        if let style = style as? DNSThemeViewStyle {
-            self.backgroundColor = style.backgroundColor.normal
-            self.borderColor = style.border.color.normal
-            self.borderWidth = CGFloat(style.border.width)
-            self.cornerRadius = CGFloat(style.border.cornerRadius)
-            self.cornerTopLeftRadius = CGFloat(style.border.cornerTopLeftRadius)
-            self.cornerTopRightRadius = CGFloat(style.border.cornerTopRightRadius)
-            self.cornerBottomLeftRadius = CGFloat(style.border.cornerBottomLeftRadius)
-            self.cornerBottomRightRadius = CGFloat(style.border.cornerBottomRightRadius)
-            self.cornerRadiusMulti = style.border.cornerRadiusMulti
-            self.shadowColor = style.shadow.color.normal
-            self.shadowOffset = style.shadow.offset
-            self.shadowOpacity = Float(style.shadow.opacity)
-            self.shadowRadius = style.shadow.radius
-            self.tintColor = style.tintColor.normal
+        self.backgroundColor = style.backgroundColor.normal
+        self.borderColor = style.border.color.normal
+        self.borderWidth = CGFloat(style.border.width)
+        self.cornerRadius = CGFloat(style.border.cornerRadius)
+        self.cornerTopLeftRadius = CGFloat(style.border.cornerTopLeftRadius)
+        self.cornerTopRightRadius = CGFloat(style.border.cornerTopRightRadius)
+        self.cornerBottomLeftRadius = CGFloat(style.border.cornerBottomLeftRadius)
+        self.cornerBottomRightRadius = CGFloat(style.border.cornerBottomRightRadius)
+        self.cornerRadiusMulti = style.border.cornerRadiusMulti
+        self.shadowColor = style.shadow.color.normal
+        self.shadowOffset = style.shadow.offset
+        self.shadowOpacity = Float(style.shadow.opacity)
+        self.shadowRadius = style.shadow.radius
+        self.tintColor = style.tintColor.normal
+
+        if let style = style as? DNSThemeLabelStyle {
+            self.font = style.font.normal
+            self.paragraphStyle = style.paragraphStyle
+            self.textColor = style.color.normal
         }
     }
 
     // MARK: - Private Variables -
     private let containerView = UIView()
     private var containerImageView = UIImageView()
-
+    private var paragraphStyle = NSMutableParagraphStyle()
     // MARK: - Public Attributes -
+    override open var text: String? {
+        didSet {
+            let attributeString = NSMutableAttributedString(string: self.text ?? "")
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                         value: self.paragraphStyle,
+                                         range: NSRange(location: 0, length: self.text?.count ?? 0))
+            self.attributedText = attributeString
+        }
+    }
+    @IBInspectable public var zeplinLineHeight: CGFloat {
+        get {
+            let fontOffset = self.font.lineHeight - self.font.pointSize
+            return self.paragraphStyle.lineSpacing + self.font.pointSize + fontOffset
+        }
+        set {
+            let fontOffset = self.font.lineHeight - self.font.pointSize
+            self.paragraphStyle.lineSpacing = newValue - self.font.pointSize - fontOffset
+
+            let attributeString = NSMutableAttributedString(string: self.text ?? "")
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                         value: self.paragraphStyle,
+                                         range: NSRange(location: 0, length: self.text?.count ?? 0))
+            self.attributedText = attributeString
+        }
+    }
+    // MARK: - Public Attributes (UIView) -
 //    @IBInspectable public var backgroundImage: UIImage? {
 //        get {
 //            return self.containerImageView.image
@@ -124,22 +154,15 @@ import UIKit
             self.containerView.layer.shadowRadius = newValue
         }
     }
-    @IBInspectable open var shadowOffset: CGSize {
-        get {
-            return self.layer.shadowOffset
-        }
-        set {
-            self.layer.shadowOffset = newValue
-            self.containerView.layer.shadowOffset = newValue
+    @IBInspectable override open var shadowOffset: CGSize {
+        didSet {
+            self.containerView.layer.shadowOffset = shadowOffset
         }
     }
-    @IBInspectable open var shadowColor: UIColor {
-        get {
-            return UIColor(cgColor: self.layer.shadowColor!)
-        }
-        set {
-            self.layer.shadowColor = newValue.cgColor
-            self.containerView.layer.shadowColor = newValue.cgColor
+    @IBInspectable override open var shadowColor: UIColor? {
+        didSet {
+            guard let shadowColor = shadowColor else { return }
+            self.containerView.layer.shadowColor = shadowColor.cgColor
         }
     }
 //    @IBInspectable var shadowColorFromImage: Bool = false {
@@ -170,24 +193,18 @@ import UIKit
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
     }
-
+    
     // MARK: - Private Methods -
     private func refreshViewLayout() {
         // View
         self.clipsToBounds = true
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius
-
-        // Shadow
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowColor = shadowColor.cgColor
-        self.layer.shadowOffset = shadowOffset
-        self.layer.shadowRadius = shadowRadius
-
+        
         // Container View
         self.containerView.layer.masksToBounds = true
         self.containerView.layer.cornerRadius = cornerRadius
-
+        
         // Image View
         self.containerImageView.backgroundColor = UIColor.clear
         //self.containerImageView.image = backgroundImage
@@ -197,12 +214,12 @@ import UIKit
         self.containerImageView.contentMode = .redraw
         self.containerImageView.isUserInteractionEnabled = false
     }
-
+    
     private func addViewLayoutSubViews() {
         // add subViews
         self.insertSubview(self.containerView, at: 0)
         self.containerView.addSubview(self.containerImageView)
-
+        
         // add image constraints
         self.containerImageView.translatesAutoresizingMaskIntoConstraints = false
         self.containerImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -218,20 +235,20 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-
-//    private func addShadowColorFromBackgroundImage() {
-//        // Get the averageColor from the image for set the Shadow Color
-//        if shadowColorFormImage {
-//            let week = self
-//            DispatchQueue.main.async {
-//                week.shadowColor = (week.containerImageView.image?.averageColor)!
-//            }
-//        }
-//    }
-
+    
+    //    private func addShadowColorFromBackgroundImage() {
+    //        // Get the averageColor from the image for set the Shadow Color
+    //        if shadowColorFormImage {
+    //            let week = self
+    //            DispatchQueue.main.async {
+    //                week.shadowColor = (week.containerImageView.image?.averageColor)!
+    //            }
+    //        }
+    //    }
+    
     private func applyRadiusMaskFor() {
         guard cornerRadiusMulti else { return }
-
+        
         let path = UIBezierPath(shouldRoundRect: bounds,
                                 topLeftRadius: cornerTopLeftRadius,
                                 topRightRadius: cornerTopRightRadius,
