@@ -12,9 +12,8 @@
 import UIKit
 
 @IBDesignable open class DNSUIButton: UIButton {
-    public var style: DNSThemeStyle? = DNSThemeButtonStyle.default {
+    public var style: DNSThemeStyle = DNSThemeButtonStyle.default {
         didSet {
-            guard let style = style else { return }
             self.utilityApply(style)
         }
     }
@@ -191,6 +190,7 @@ import UIKit
         refreshViewLayout()
     }
     override open func draw(_ rect: CGRect) {
+        self.utilityApply(style)
         super.draw(rect)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()

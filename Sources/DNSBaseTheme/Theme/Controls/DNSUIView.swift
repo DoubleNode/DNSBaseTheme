@@ -12,9 +12,8 @@
 import UIKit
 
 @IBDesignable open class DNSUIView: UIView {
-    public var style: DNSThemeStyle? = DNSThemeLabelStyle.default {
+    public var style: DNSThemeStyle = DNSThemeLabelStyle.default {
         didSet {
-            guard let style = style else { return }
             self.utilityApply(style)
         }
     }
@@ -158,6 +157,7 @@ import UIKit
         refreshViewLayout()
     }
     override open func draw(_ rect: CGRect) {
+        self.utilityApply(style)
         super.draw(rect)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
