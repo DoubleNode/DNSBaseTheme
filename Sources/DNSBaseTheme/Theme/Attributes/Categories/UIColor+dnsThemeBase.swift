@@ -59,7 +59,7 @@ public extension UIColor {
                 public static var selected = UIColor.systemBlue
             }
             public enum Title {
-                public static var disabled = UIColor.systemBlue
+                public static var disabled = UIColor.systemGray
                 public static var focused = UIColor.systemBlue
                 public static var highlighted = UIColor.white
                 public static var normal = UIColor.systemBlue
