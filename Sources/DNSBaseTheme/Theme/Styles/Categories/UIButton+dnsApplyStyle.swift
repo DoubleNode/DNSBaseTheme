@@ -35,6 +35,10 @@ public extension UIButton {
     }
     func updateForState(using style: DNSThemeButtonStyle) {
         if self.isEnabled {
+            self.backgroundColor = style.backgroundColor.normal
+            self.layer.borderColor = style.border.color.normal.cgColor
+            self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.tintColor = style.tintColor.normal
             if #available(iOS 15.0, *) {
                 self.subtitleLabel?.textColor = style.subtitleColor.normal
                 self.subtitleLabel?.font = style.subtitleFont.normal
@@ -43,6 +47,10 @@ public extension UIButton {
             }
             self.titleLabel?.font = style.titleFont.normal
         } else {
+            self.backgroundColor = style.backgroundColor.disabled
+            self.layer.borderColor = style.border.color.disabled.cgColor
+            self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.tintColor = style.tintColor.disabled
             if #available(iOS 15.0, *) {
                 self.subtitleLabel?.textColor = style.subtitleColor.disabled
                 self.subtitleLabel?.font = style.subtitleFont.disabled
@@ -52,6 +60,10 @@ public extension UIButton {
             self.titleLabel?.font = style.titleFont.disabled
         }
         if self.isSelected {
+            self.backgroundColor = style.backgroundColor.selected
+            self.layer.borderColor = style.border.color.selected.cgColor
+            self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.tintColor = style.tintColor.selected
             if #available(iOS 15.0, *) {
                 self.subtitleLabel?.textColor = style.subtitleColor.selected
                 self.subtitleLabel?.font = style.subtitleFont.selected
@@ -61,6 +73,10 @@ public extension UIButton {
             self.titleLabel?.font = style.titleFont.selected
         }
         if self.isHighlighted {
+            self.backgroundColor = style.backgroundColor.highlighted
+            self.layer.borderColor = style.border.color.highlighted.cgColor
+            self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.tintColor = style.tintColor.highlighted
             if #available(iOS 15.0, *) {
                 self.subtitleLabel?.textColor = style.subtitleColor.highlighted
                 self.subtitleLabel?.font = style.subtitleFont.highlighted
@@ -70,6 +86,10 @@ public extension UIButton {
             self.titleLabel?.font = style.titleFont.highlighted
         }
         if self.isFocused {
+            self.backgroundColor = style.backgroundColor.focused
+            self.layer.borderColor = style.border.color.focused.cgColor
+            self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.tintColor = style.tintColor.focused
             if #available(iOS 15.0, *) {
                 self.subtitleLabel?.textColor = style.subtitleColor.focused
                 self.subtitleLabel?.font = style.subtitleFont.focused
