@@ -15,11 +15,11 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
     
-    public init(color: DNSUIColor = DNSUIColor(UIColor.Base.label),
+    public init(color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
                 shadow: DNSUIShadow = DNSUIShadow(),
-                backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
+                backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.background),
                 border: DNSUIBorder = DNSUIBorder(),
                 tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         self.color = color

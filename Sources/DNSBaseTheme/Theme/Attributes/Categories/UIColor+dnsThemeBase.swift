@@ -12,7 +12,6 @@ public extension UIColor {
     enum Base {
         public static var background = UIColor.systemBackground
         public static var border = UIColor.clear
-        public static var label = UIColor.label
         public static var shadow = UIColor.clear
         public static var tint = UIColor.systemBlue
         public enum Button {
@@ -82,6 +81,10 @@ public extension UIColor {
             public static var line = UIColor.tertiaryLabel
             public static var text = UIColor.label
             public static var title = UIColor.tertiaryLabel
+        }
+        public enum Label {
+            public static var background = UIColor.clear
+            public static var text = UIColor.label
         }
     }
 }
