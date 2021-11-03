@@ -246,9 +246,9 @@ import UIKit
                           options: .transitionCrossDissolve,
                           animations: {
             self.image = image
-        },
-                          completion: { _ in
-            self.clipsToBounds = self.clipsToBounds
+//        },
+//                          completion: { _ in
+//            self.clipsToBounds = self.clipsToBounds
         })
     }
 }
