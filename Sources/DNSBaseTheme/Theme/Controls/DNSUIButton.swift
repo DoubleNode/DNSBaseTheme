@@ -85,7 +85,7 @@ import UIKit
     override open var backgroundColor: UIColor? {
         didSet {
             containerView.backgroundColor = backgroundColor
-            containerImageView.backgroundColor = backgroundColor
+//            containerImageView.backgroundColor = backgroundColor
 //            if let newBackgroundColor = backgroundColor {
 //                containerView.backgroundColor = newBackgroundColor
 //            }
