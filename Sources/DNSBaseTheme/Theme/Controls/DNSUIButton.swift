@@ -83,17 +83,17 @@ import UIKit
 //        }
 //    }
     override open var backgroundColor: UIColor? {
-        didSet(newBackgroundColor) {
-            if let newBackgroundColor = newBackgroundColor {
-                containerView.backgroundColor = newBackgroundColor
-            }
-            if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
+        didSet {
+            let newColor = backgroundColor
+            containerView.backgroundColor = newColor
+            if newColor != UIColor.clear { backgroundColor = UIColor.clear }
         }
     }
     override open var clipsToBounds: Bool {
-        didSet(new) {
-            containerView.clipsToBounds = new
-            containerImageView.clipsToBounds = new
+        didSet {
+            let newClip = clipsToBounds
+            containerView.clipsToBounds = newClip
+            containerImageView.clipsToBounds = newClip
         }
     }
     @IBInspectable open var borderColor: UIColor {
