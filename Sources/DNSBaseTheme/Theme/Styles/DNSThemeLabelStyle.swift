@@ -14,10 +14,12 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
+    public var zeplinLineHeight: Double?
     
     public init(color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
+                zeplinLineHeight: Double? = nil,
                 shadow: DNSUIShadow = DNSUIShadow(),
                 backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.background),
                 border: DNSUIBorder = DNSUIBorder(),
@@ -25,6 +27,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
         self.color = color
         self.font = font
         self.paragraphStyle = paragraphStyle
+        self.zeplinLineHeight = zeplinLineHeight
         super.init(backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,

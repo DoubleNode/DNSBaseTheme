@@ -38,6 +38,9 @@ import UIKit
             self.font = style.font.normal
             self.paragraphStyle = style.paragraphStyle
             self.textColor = style.color.normal
+            if style.zeplinLineHeight != nil {
+                self.zeplinLineHeight = style.zeplinLineHeight!
+            }
         }
     }
 

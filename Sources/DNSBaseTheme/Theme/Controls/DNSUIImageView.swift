@@ -244,7 +244,11 @@ import UIKit
         UIView.transition(with: self,
                           duration: duration,
                           options: .transitionCrossDissolve,
-                          animations: { self.image = image },
-                          completion: nil)
+                          animations: {
+            self.image = image
+        },
+                          completion: { _ in
+            self.clipsToBounds = self.clipsToBounds
+        })
     }
 }
