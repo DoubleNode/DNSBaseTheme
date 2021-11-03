@@ -22,6 +22,7 @@ import UIKit
         self.backgroundColor = style.backgroundColor.normal
         self.borderColor = style.border.color.normal
         self.borderWidth = CGFloat(style.border.width)
+        self.clipsToBounds = true
         self.cornerRadius = CGFloat(style.border.cornerRadius)
         self.cornerTopLeftRadius = CGFloat(style.border.cornerTopLeftRadius)
         self.cornerTopRightRadius = CGFloat(style.border.cornerTopRightRadius)
@@ -246,9 +247,6 @@ import UIKit
                           options: .transitionCrossDissolve,
                           animations: {
             self.image = image
-//        },
-//                          completion: { _ in
-//            self.clipsToBounds = self.clipsToBounds
         })
     }
 }
