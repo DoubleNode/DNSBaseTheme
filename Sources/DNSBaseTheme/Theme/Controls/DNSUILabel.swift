@@ -86,9 +86,12 @@ import UIKit
 //    }
     override open var backgroundColor: UIColor? {
         didSet {
-            let newColor = backgroundColor
-            containerView.backgroundColor = newColor
-            if newColor != UIColor.clear { backgroundColor = UIColor.clear }
+            containerView.backgroundColor = backgroundColor
+            containerImageView.backgroundColor = backgroundColor
+//            if let newBackgroundColor = backgroundColor {
+//                containerView.backgroundColor = newBackgroundColor
+//            }
+//            if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
         }
     }
     override open var clipsToBounds: Bool {
