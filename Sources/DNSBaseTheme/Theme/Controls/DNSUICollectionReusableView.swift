@@ -173,7 +173,6 @@ import UIKit
     // MARK: - Private Methods -
     private func refreshViewLayout() {
         // View
-        self.clipsToBounds = true
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius
         
@@ -184,6 +183,7 @@ import UIKit
         self.layer.shadowRadius = shadowRadius
         
         // Container View
+        self.containerView.clipsToBounds = self.clipsToBounds
         self.containerView.layer.masksToBounds = true
         self.containerView.layer.cornerRadius = cornerRadius
         
@@ -192,7 +192,7 @@ import UIKit
         //self.containerImageView.image = backgroundImage
         self.containerImageView.layer.cornerRadius = cornerRadius
         self.containerImageView.layer.masksToBounds = true
-        self.containerImageView.clipsToBounds = true
+        self.containerImageView.clipsToBounds = self.clipsToBounds
         self.containerImageView.contentMode = .redraw
         self.containerImageView.isUserInteractionEnabled = false
     }
