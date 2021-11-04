@@ -199,7 +199,7 @@ import UIKit
     }
     
     // MARK: - Private Methods -
-    private func refreshViewLayout() {
+    public func refreshViewLayout() {
         // View
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius

@@ -31,7 +31,8 @@ import UIKit
     @IBInspectable var clockwise: Bool = true
 
     override open func draw(_ rect: CGRect) {
-        super.draw(rect)
+//        super.draw(rect)
+        refreshViewLayout()
         centreArcPerpendicular()
     }
 
