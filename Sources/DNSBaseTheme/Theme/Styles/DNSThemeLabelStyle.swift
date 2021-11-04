@@ -10,8 +10,8 @@ import UIKit
 
 open class DNSThemeLabelStyle: DNSThemeStyle {
     public static var `default`: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.default
-    static public func themeStyle(named name: String) -> DNSThemeStyle {
-        return themeStyles[name] ?? DNSThemeLabelStyle.default
+    static public func themeStyle(named styleName: String) -> DNSThemeStyle {
+        return themeStyles["label_\(styleName)"] ?? DNSThemeLabelStyle.default
     }
 
     public var color: DNSUIColor
@@ -32,7 +32,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
         self.font = font
         self.paragraphStyle = paragraphStyle
         self.zeplinLineHeight = zeplinLineHeight
-        super.init(styleName: styleName,
+        super.init(styleName: (styleName != nil) ? "label_\(styleName!)" : styleName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
