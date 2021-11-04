@@ -158,7 +158,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.style = DNSThemeLabelStyle.themeStyle(named: self.styleName)
+        self.styleName = self.styleName
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
@@ -179,6 +179,7 @@ import UIKit
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupView()
         self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
