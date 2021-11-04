@@ -146,9 +146,24 @@ import UIKit
 //        }
 //    }
     
+    override open func prepareForInterfaceBuilder() {
+        setupView()
+    }
+    func setupView() {
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = borderWidth
+        self.layer.cornerRadius = cornerRadius
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowRadius = shadowRadius
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = shadowOffset
+        applyRadiusMaskFor()
+    }
+    
     // MARK: - Life Cycle -
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
         self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
