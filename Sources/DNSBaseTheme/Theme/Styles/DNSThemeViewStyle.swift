@@ -10,12 +10,17 @@ import UIKit
 
 open class DNSThemeViewStyle: DNSThemeStyle {
     public static var `default`: DNSThemeViewStyle = DNSThemeViewStyle.Base.default
-    
-    override public init(backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
+    static public func themeStyle(named name: String) -> DNSThemeStyle {
+        return themeStyles[name] ?? DNSThemeViewStyle.default
+    }
+
+    override public init(styleName: String? = nil,
+                         backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),
                          tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
-        super.init(backgroundColor: backgroundColor,
+        super.init(styleName: styleName,
+                   backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)

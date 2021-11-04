@@ -10,13 +10,17 @@ import UIKit
 
 open class DNSThemeLabelStyle: DNSThemeStyle {
     public static var `default`: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.default
-    
+    static public func themeStyle(named name: String) -> DNSThemeStyle {
+        return themeStyles[name] ?? DNSThemeLabelStyle.default
+    }
+
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
     public var zeplinLineHeight: Double?
     
-    public init(color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
+    public init(styleName: String? = nil,
+                color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
                 zeplinLineHeight: Double? = nil,
@@ -28,7 +32,8 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
         self.font = font
         self.paragraphStyle = paragraphStyle
         self.zeplinLineHeight = zeplinLineHeight
-        super.init(backgroundColor: backgroundColor,
+        super.init(styleName: styleName,
+                   backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
