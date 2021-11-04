@@ -17,12 +17,9 @@ import UIKit
             self.utilityApply(style)
         }
     }
-    @IBInspectable open var styleName: String {
-        get {
-            return self.style.name ?? ""
-        }
-        set {
-            self.style = DNSThemeLabelStyle.themeStyle(named: newValue)
+    @IBInspectable open var styleName: String = "" {
+        didSet {
+            self.style = DNSThemeLabelStyle.themeStyle(named: styleName)
         }
     }
 
@@ -191,7 +188,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.styleName = self.styleName
+        self.style = DNSThemeLabelStyle.themeStyle(named: self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
