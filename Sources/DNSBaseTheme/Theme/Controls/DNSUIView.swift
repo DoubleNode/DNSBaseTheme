@@ -12,14 +12,14 @@
 import UIKit
 
 @IBDesignable open class DNSUIView: UIView {
-    public var style: DNSThemeStyle = DNSThemeLabelStyle.default {
+    public var style: DNSThemeStyle = DNSThemeViewStyle.default {
         didSet {
             self.utilityApply(style)
         }
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            self.style = DNSThemeLabelStyle.themeStyle(named: styleName)
+            self.style = DNSThemeViewStyle.themeStyle(named: styleName)
         }
     }
 

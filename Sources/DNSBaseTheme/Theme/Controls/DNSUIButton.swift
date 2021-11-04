@@ -19,7 +19,7 @@ import UIKit
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            self.style = DNSThemeLabelStyle.themeStyle(named: styleName)
+            self.style = DNSThemeButtonStyle.themeStyle(named: styleName)
         }
     }
 
