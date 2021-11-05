@@ -9,9 +9,10 @@
 import UIKit
 
 open class DNSThemeFieldStyle: DNSThemeStyle {
+    public static var themeStyles: [String: DNSThemeFieldStyle] = [:]
     public static var `default`: DNSThemeFieldStyle = DNSThemeFieldStyle.Base.default
-    static public func themeStyle(named styleName: String) -> DNSThemeStyle {
-        return themeStyles["field_\(styleName)"] ?? DNSThemeFieldStyle.default
+    public static func themeStyle(named styleName: String) -> DNSThemeStyle {
+        return themeStyles[styleName] ?? DNSThemeFieldStyle.default
     }
 
     public var alertColor: DNSUIColor
@@ -50,11 +51,13 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
         self.textFont = textFont
         self.titleColor = titleColor
         self.titleFont = titleFont
-        super.init(styleName: (styleName != nil) ? "field_\(styleName!)" : styleName,
+        super.init(styleName: styleName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+        guard let name = self.name else { return }
+        DNSThemeFieldStyle.themeStyles[name] = self
     }
 }
 public extension DNSThemeFieldStyle {

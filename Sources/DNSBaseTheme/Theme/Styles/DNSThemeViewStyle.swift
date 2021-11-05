@@ -9,9 +9,10 @@
 import UIKit
 
 open class DNSThemeViewStyle: DNSThemeStyle {
+    public static var themeStyles: [String: DNSThemeViewStyle] = [:]
     public static var `default`: DNSThemeViewStyle = DNSThemeViewStyle.Base.default
-    static public func themeStyle(named styleName: String) -> DNSThemeStyle {
-        return themeStyles["view_\(styleName)"] ?? DNSThemeViewStyle.default
+    public static func themeStyle(named styleName: String) -> DNSThemeStyle {
+        return themeStyles[styleName] ?? DNSThemeViewStyle.default
     }
 
     override public init(styleName: String? = nil,
@@ -19,11 +20,13 @@ open class DNSThemeViewStyle: DNSThemeStyle {
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),
                          tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
-        super.init(styleName: (styleName != nil) ? "view_\(styleName!)" : styleName,
+        super.init(styleName: styleName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+        guard let name = self.name else { return }
+        DNSThemeViewStyle.themeStyles[name] = self
     }
 }
 public extension DNSThemeViewStyle {

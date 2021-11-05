@@ -9,9 +9,10 @@
 import UIKit
 
 open class DNSThemeButtonStyle: DNSThemeStyle {
+    public static var themeStyles: [String: DNSThemeButtonStyle] = [:]
     public static var `default`: DNSThemeButtonStyle = DNSThemeButtonStyle.Base.default
-    static public func themeStyle(named styleName: String) -> DNSThemeStyle {
-        return themeStyles["button_\(styleName)"] ?? DNSThemeButtonStyle.default
+    public static func themeStyle(named styleName: String) -> DNSThemeStyle {
+        return themeStyles[styleName] ?? DNSThemeButtonStyle.default
     }
 
     public var subtitleColor: DNSUIColor
@@ -38,11 +39,13 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
         self.titleColor = titleColor
         self.titleFont = titleFont
         self.titleShadow = titleShadow
-        super.init(styleName: (styleName != nil) ? "button_\(styleName!)" : styleName,
+        super.init(styleName: styleName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
+        guard let name = self.name else { return }
+        DNSThemeButtonStyle.themeStyles[name] = self
     }
 }
 public extension DNSThemeButtonStyle {

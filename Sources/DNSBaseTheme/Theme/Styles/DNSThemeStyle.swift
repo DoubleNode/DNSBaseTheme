@@ -9,8 +9,6 @@
 import UIKit
 
 open class DNSThemeStyle {
-    static public var themeStyles: [String: DNSThemeStyle] = [:]
-
     public var name: String?
     public var backgroundColor: DNSUIColor
     public var border: DNSUIBorder
@@ -27,8 +25,5 @@ open class DNSThemeStyle {
         self.border = border
         self.shadow = shadow
         self.tintColor = tintColor
-        
-        guard let name = self.name else { return }
-        DNSThemeStyle.themeStyles[name] = self
     }
 }

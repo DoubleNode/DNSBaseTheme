@@ -17,6 +17,7 @@ import UIKit
         didSet {
             guard oldValue.name != style.name else { return }
             self.utilityApply(style)
+            self.styleName = style.name ?? ""
         }
     }
     @IBInspectable open var styleName: String = "" {
