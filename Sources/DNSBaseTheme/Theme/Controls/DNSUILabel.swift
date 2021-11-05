@@ -189,7 +189,6 @@ import UIKit
         setupView()
     }
     func setupView() {
-//        self.utilityApply(self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
@@ -204,14 +203,12 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-//        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-//        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
@@ -240,7 +237,7 @@ import UIKit
         
         // Image View
         self.containerImageView.backgroundColor = UIColor.clear
-        //self.containerImageView.image = backgroundImage
+//self.containerImageView.image = backgroundImage
         self.containerImageView.layer.cornerRadius = cornerRadius
         self.containerImageView.layer.masksToBounds = true
         self.containerImageView.clipsToBounds = self.clipsToBounds
