@@ -227,7 +227,7 @@ import UIKit
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
-        self.utilityApply(self.styleName)
+//        self.utilityApply(self.styleName)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
