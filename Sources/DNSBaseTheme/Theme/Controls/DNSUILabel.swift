@@ -15,16 +15,21 @@ import UIKit
     public typealias ThemeStyle = DNSThemeLabelStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
+            guard oldValue.name != style.name else { return }
             self.utilityApply(style)
         }
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            self.style = ThemeStyle.themeStyle(named: styleName)
+            guard oldValue != styleName else { return }
+            self.utilityApply(styleName)
         }
     }
-
+    
     // MARK: - Utility Methods -
+    open func utilityApply(_ styleName: String) {
+        self.style = ThemeStyle.themeStyle(named: styleName)
+    }
     open func utilityApply(_ style: DNSThemeStyle) {
         self.backgroundColor = style.backgroundColor.normal
         self.borderColor = style.border.color.normal
@@ -184,7 +189,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.style = ThemeStyle.themeStyle(named: self.styleName)
+        self.utilityApply(self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
@@ -217,6 +222,7 @@ import UIKit
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
+        self.utilityApply(self.styleName)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
