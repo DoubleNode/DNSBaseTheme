@@ -12,14 +12,15 @@
 import UIKit
 
 @IBDesignable open class DNSUIButton: UIButton {
-    public var style: DNSThemeStyle = DNSThemeButtonStyle.default {
+    public typealias ThemeStyle = DNSThemeButtonStyle
+    public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             self.utilityApply(style)
         }
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            self.style = DNSThemeButtonStyle.themeStyle(named: styleName)
+            self.style = ThemeStyle.themeStyle(named: styleName)
         }
     }
 
@@ -57,19 +58,19 @@ import UIKit
 
     public override var isEnabled: Bool {
         didSet {
-            guard let style = style as? DNSThemeButtonStyle else { return }
+            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public override var isHighlighted: Bool {
         didSet {
-            guard let style = style as? DNSThemeButtonStyle else { return }
+            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public override var isSelected: Bool {
         didSet {
-            guard let style = style as? DNSThemeButtonStyle else { return }
+            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
@@ -188,7 +189,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.style = DNSThemeLabelStyle.themeStyle(named: self.styleName)
+        self.style = ThemeStyle.themeStyle(named: self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius

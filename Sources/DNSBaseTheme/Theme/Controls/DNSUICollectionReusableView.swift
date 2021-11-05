@@ -12,14 +12,15 @@
 import UIKit
 
 @IBDesignable open class DNSUICollectionReusableView: UICollectionReusableView {
-    public var style: DNSThemeStyle = DNSThemeViewStyle.default {
+    public typealias ThemeStyle = DNSThemeViewStyle
+    public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             self.utilityApply(style)
         }
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            self.style = DNSThemeViewStyle.themeStyle(named: styleName)
+            self.style = ThemeStyle.themeStyle(named: styleName)
         }
     }
 
@@ -155,7 +156,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.style = DNSThemeLabelStyle.themeStyle(named: self.styleName)
+        self.style = ThemeStyle.themeStyle(named: self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
