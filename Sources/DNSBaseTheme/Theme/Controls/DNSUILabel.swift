@@ -189,7 +189,7 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.utilityApply(self.styleName)
+//        self.utilityApply(self.styleName)
         self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
@@ -204,14 +204,14 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        self.utilityApply(style)
+//        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-        self.utilityApply(style)
+//        self.utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
@@ -222,7 +222,6 @@ import UIKit
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
-//        self.utilityApply(self.styleName)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
