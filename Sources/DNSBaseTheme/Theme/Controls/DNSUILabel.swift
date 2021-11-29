@@ -11,13 +11,6 @@
 
 import UIKit
 
-extension UILabel {
-    func strikeThroughText() {
-        let attributeString =  NSMutableAttributedString(string: self.text ?? "")
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0,attributeString.length))
-        self.attributedText = attributeString
-    }
-}
 @IBDesignable open class DNSUILabel: UILabel {
     public typealias ThemeStyle = DNSThemeLabelStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
@@ -57,6 +50,9 @@ extension UILabel {
         if let style = style as? DNSThemeLabelStyle {
             self.font = style.font.normal
             self.paragraphStyle = style.paragraphStyle
+            self.strikeThru = style.strikeThru
+            self.strikeThruColor = style.strikeThruColor
+            self.strikeThruStyle = style.strikeThruStyle
             self.textColor = style.color.normal
             if style.zeplinLineHeight != nil {
                 self.zeplinLineHeight = style.zeplinLineHeight!
@@ -67,7 +63,7 @@ extension UILabel {
         let attributeString =  NSMutableAttributedString(string: self.text ?? "")
         if strikeThru {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                         value: NSUnderlineStyle.single.rawValue,
+                                         value: strikeThruStyle.rawValue,
                                          range: NSMakeRange(0, attributeString.length))
             attributeString.addAttribute(NSAttributedString.Key.strikethroughColor,
                                          value: strikeThruColor,
@@ -204,6 +200,11 @@ extension UILabel {
         }
     }
     @IBInspectable open var strikeThruColor: UIColor = UIColor.red {
+        didSet {
+            self.utilityRedrawStrikeThru()
+        }
+    }
+    @IBInspectable open var strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single {
         didSet {
             self.utilityRedrawStrikeThru()
         }

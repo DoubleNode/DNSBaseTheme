@@ -18,12 +18,18 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
+    public var strikeThru: Bool
+    public var strikeThruColor: DNSUIColor
+    public var strikeThruStyle: NSUnderlineStyle
     public var zeplinLineHeight: Double?
     
     public init(styleName: String? = nil,
                 color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
+                strikeThru: Bool = false,
+                strikeThruColor: UIColor = DNSUIColor(UIColor.Base.Label.strikeThru),
+                strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single,
                 zeplinLineHeight: Double? = nil,
                 shadow: DNSUIShadow = DNSUIShadow(),
                 backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.background),
@@ -32,6 +38,9 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
         self.color = color
         self.font = font
         self.paragraphStyle = paragraphStyle
+        self.strikeThru = strikeThru
+        self.strikeThruColor = strikeThruColor
+        self.strikeThruStyle = strikeThruStyle
         self.zeplinLineHeight = zeplinLineHeight
         super.init(styleName: styleName,
                    backgroundColor: backgroundColor,

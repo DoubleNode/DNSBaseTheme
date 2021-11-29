@@ -84,6 +84,7 @@ public extension UIColor {
         }
         public enum Label {
             public static var background = UIColor.clear
+            public static var strikeThru = UIColor.label
             public static var text = UIColor.label
         }
     }
