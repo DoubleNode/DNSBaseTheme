@@ -28,7 +28,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
                 strikeThru: Bool = false,
-                strikeThruColor: UIColor = DNSUIColor(UIColor.Base.Label.strikeThru),
+                strikeThruColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.strikeThru),
                 strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single,
                 zeplinLineHeight: Double? = nil,
                 shadow: DNSUIShadow = DNSUIShadow(),

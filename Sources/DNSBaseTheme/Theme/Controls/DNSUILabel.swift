@@ -51,7 +51,7 @@ import UIKit
             self.font = style.font.normal
             self.paragraphStyle = style.paragraphStyle
             self.strikeThru = style.strikeThru
-            self.strikeThruColor = style.strikeThruColor
+            self.strikeThruColor = style.strikeThruColor.normal
             self.strikeThruStyle = style.strikeThruStyle
             self.textColor = style.color.normal
             if style.zeplinLineHeight != nil {
