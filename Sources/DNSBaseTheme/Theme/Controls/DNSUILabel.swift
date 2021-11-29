@@ -11,6 +11,13 @@
 
 import UIKit
 
+extension UILabel {
+    func strikeThroughText() {
+        let attributeString =  NSMutableAttributedString(string: self.text ?? "")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0,attributeString.length))
+        self.attributedText = attributeString
+    }
+}
 @IBDesignable open class DNSUILabel: UILabel {
     public typealias ThemeStyle = DNSThemeLabelStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
@@ -56,6 +63,21 @@ import UIKit
             }
         }
     }
+    open func utilityRedrawStrikeThru() {
+        let attributeString =  NSMutableAttributedString(string: self.text ?? "")
+        if strikeThru {
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                         value: NSUnderlineStyle.single.rawValue,
+                                         range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughColor,
+                                         value: strikeThruColor,
+                                         range: NSMakeRange(0, attributeString.length))
+        }
+        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                     value: self.paragraphStyle,
+                                     range: NSMakeRange(0, attributeString.length))
+        self.attributedText = attributeString
+    }
 
     // MARK: - Private Variables -
     private let containerView = UIView()
@@ -64,11 +86,7 @@ import UIKit
     // MARK: - Public Attributes -
     override open var text: String? {
         didSet {
-            let attributeString = NSMutableAttributedString(string: self.text ?? "")
-            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                         value: self.paragraphStyle,
-                                         range: NSRange(location: 0, length: self.text?.count ?? 0))
-            self.attributedText = attributeString
+            self.utilityRedrawStrikeThru()
         }
     }
     @IBInspectable public var zeplinLineHeight: CGFloat {
@@ -79,12 +97,7 @@ import UIKit
         set {
             let fontOffset = self.font.lineHeight - self.font.pointSize
             self.paragraphStyle.lineSpacing = newValue - self.font.pointSize - fontOffset
-
-            let attributeString = NSMutableAttributedString(string: self.text ?? "")
-            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                         value: self.paragraphStyle,
-                                         range: NSRange(location: 0, length: self.text?.count ?? 0))
-            self.attributedText = attributeString
+            self.utilityRedrawStrikeThru()
         }
     }
     // MARK: - Public Attributes (UIView) -
@@ -185,6 +198,16 @@ import UIKit
 //            addShadowColorFromBackgroundImage()
 //        }
 //    }
+    @IBInspectable open var strikeThru: Bool = false {
+        didSet {
+            self.utilityRedrawStrikeThru()
+        }
+    }
+    @IBInspectable open var strikeThruColor: UIColor = UIColor.red {
+        didSet {
+            self.utilityRedrawStrikeThru()
+        }
+    }
 
     override open func prepareForInterfaceBuilder() {
         setupView()
@@ -225,7 +248,6 @@ import UIKit
         applyRadiusMaskFor()
     }
     
-    // MARK: - Private Methods -
     public func refreshViewLayout() {
         // View
         self.layer.masksToBounds = false
@@ -245,6 +267,7 @@ import UIKit
         self.containerImageView.contentMode = .redraw
         self.containerImageView.isUserInteractionEnabled = false
     }
+    // MARK: - Private Methods -
     private func addViewLayoutSubViews() {
         // add subViews
         self.insertSubview(self.containerView, at: 0)
