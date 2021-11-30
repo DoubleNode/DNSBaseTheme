@@ -60,7 +60,14 @@ import UIKit
         }
     }
     open func utilityRedrawAttributeString() {
-        let attributeString =  NSMutableAttributedString(string: self.text ?? "")
+        guard let text = self.text, !text.isEmpty else {
+            self.attributedText = nil
+            return
+        }
+        let attributeString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                     value: self.paragraphStyle,
+                                     range: NSMakeRange(0, attributeString.length))
         if self.strikeThru {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
                                          value: self.strikeThruStyle.rawValue,
@@ -69,9 +76,6 @@ import UIKit
                                          value: self.strikeThruColor,
                                          range: NSMakeRange(0, attributeString.length))
         }
-        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                     value: self.paragraphStyle,
-                                     range: NSMakeRange(0, attributeString.length))
         self.attributedText = attributeString
     }
 
@@ -204,7 +208,7 @@ import UIKit
             self.utilityRedrawAttributeString()
         }
     }
-    @IBInspectable open var strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single {
+    @IBInspectable open var strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.thick {
         didSet {
             self.utilityRedrawAttributeString()
         }
