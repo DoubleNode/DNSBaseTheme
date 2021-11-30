@@ -59,14 +59,14 @@ import UIKit
             }
         }
     }
-    open func utilityRedrawStrikeThru() {
+    open func utilityRedrawAttributeString() {
         let attributeString =  NSMutableAttributedString(string: self.text ?? "")
-        if strikeThru {
+        if self.strikeThru {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                         value: strikeThruStyle.rawValue,
+                                         value: self.strikeThruStyle.rawValue,
                                          range: NSMakeRange(0, attributeString.length))
             attributeString.addAttribute(NSAttributedString.Key.strikethroughColor,
-                                         value: strikeThruColor,
+                                         value: self.strikeThruColor,
                                          range: NSMakeRange(0, attributeString.length))
         }
         attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
@@ -82,7 +82,7 @@ import UIKit
     // MARK: - Public Attributes -
     override open var text: String? {
         didSet {
-            self.utilityRedrawStrikeThru()
+            self.utilityRedrawAttributeString()
         }
     }
     @IBInspectable public var zeplinLineHeight: CGFloat {
@@ -93,7 +93,7 @@ import UIKit
         set {
             let fontOffset = self.font.lineHeight - self.font.pointSize
             self.paragraphStyle.lineSpacing = newValue - self.font.pointSize - fontOffset
-            self.utilityRedrawStrikeThru()
+            self.utilityRedrawAttributeString()
         }
     }
     // MARK: - Public Attributes (UIView) -
@@ -196,17 +196,17 @@ import UIKit
 //    }
     @IBInspectable open var strikeThru: Bool = false {
         didSet {
-            self.utilityRedrawStrikeThru()
+            self.utilityRedrawAttributeString()
         }
     }
     @IBInspectable open var strikeThruColor: UIColor = UIColor.red {
         didSet {
-            self.utilityRedrawStrikeThru()
+            self.utilityRedrawAttributeString()
         }
     }
     @IBInspectable open var strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single {
         didSet {
-            self.utilityRedrawStrikeThru()
+            self.utilityRedrawAttributeString()
         }
     }
 
@@ -241,12 +241,14 @@ import UIKit
         super.draw(rect)
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
+        self.utilityRedrawAttributeString()
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
         refreshViewLayout()
 //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
+        self.utilityRedrawAttributeString()
     }
     
     public func refreshViewLayout() {
