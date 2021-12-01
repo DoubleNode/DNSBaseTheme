@@ -86,6 +86,7 @@ import UIKit
     // MARK: - Public Attributes -
     override open var text: String? {
         didSet {
+            self.attributedText = nil
             self.utilityRedrawAttributeString()
         }
     }
