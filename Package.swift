@@ -28,6 +28,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.1.0"),
         .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.6.18"),
+        .package(url: "https://github.com/SwipeCellKit/SwipeCellKit", from: "2.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -35,7 +36,7 @@ let package = Package(
         .target(
             name: "DNSBaseTheme",
             dependencies: [
-                "AlamofireImage", "DNSCore",
+                "AlamofireImage", "DNSCore", "SwipeCellKit",
         ]),
         .testTarget(
             name: "DNSBaseThemeTests",

@@ -9,9 +9,10 @@
 //  https://github.com/paulosilva/CustomUIView
 //
 
+import SwipeCellKit
 import UIKit
 
-@IBDesignable open class DNSUICollectionViewCell: UICollectionViewCell {
+@IBDesignable open class DNSUICollectionViewCell: SwipeCollectionViewCell {
     public typealias ThemeStyle = DNSThemeViewStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
