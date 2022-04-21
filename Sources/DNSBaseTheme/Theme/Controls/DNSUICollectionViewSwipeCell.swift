@@ -1,5 +1,5 @@
 //
-//  DNSUICollectionViewCell.swift
+//  DNSUICollectionViewSwipeCell.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
 //
 //  Created by Darren Ehlers.
@@ -9,9 +9,10 @@
 //  https://github.com/paulosilva/CustomUIView
 //
 
+import SwipeCellKit
 import UIKit
 
-@IBDesignable open class DNSUICollectionViewCell: UICollectionViewCell {
+@IBDesignable open class DNSUICollectionViewSwipeCell: SwipeCollectionViewCell {
     public typealias ThemeStyle = DNSThemeViewStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
