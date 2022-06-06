@@ -8,7 +8,22 @@
 
 import UIKit
 
-open class DNSUIShadow {
+open class DNSUIShadow: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(color)
+        hasher.combine(offset.width)
+        hasher.combine(offset.height)
+        hasher.combine(opacity)
+        hasher.combine(radius)
+    }
+    public static func == (lhs: DNSUIShadow, rhs: DNSUIShadow) -> Bool {
+        guard lhs.color == rhs.color else { return false }
+        guard lhs.offset == rhs.offset else { return false }
+        guard lhs.opacity == rhs.opacity else { return false }
+        guard lhs.radius == rhs.radius else { return false }
+        return true
+    }
+    
     public var color: DNSUIColor
     public var offset: CGSize
     public var opacity: Float

@@ -8,7 +8,29 @@
 
 import UIKit
 
-open class DNSUIBorder {
+open class DNSUIBorder: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(color)
+        hasher.combine(cornerRadius)
+        hasher.combine(cornerRadiusMulti)
+        hasher.combine(cornerTopLeftRadius)
+        hasher.combine(cornerTopRightRadius)
+        hasher.combine(cornerBottomLeftRadius)
+        hasher.combine(cornerBottomRightRadius)
+        hasher.combine(width)
+    }
+    public static func == (lhs: DNSUIBorder, rhs: DNSUIBorder) -> Bool {
+        guard lhs.color == rhs.color else { return false }
+        guard lhs.cornerRadius == rhs.cornerRadius else { return false }
+        guard lhs.cornerRadiusMulti == rhs.cornerRadiusMulti else { return false }
+        guard lhs.cornerTopLeftRadius == rhs.cornerTopLeftRadius else { return false }
+        guard lhs.cornerTopRightRadius == rhs.cornerTopRightRadius else { return false }
+        guard lhs.cornerBottomLeftRadius == rhs.cornerBottomLeftRadius else { return false }
+        guard lhs.cornerBottomRightRadius == rhs.cornerBottomRightRadius else { return false }
+        guard lhs.width == rhs.width else { return false }
+        return true
+    }
+    
     public var color: DNSUIColor
     public var cornerRadius: Double
     public var cornerRadiusMulti: Bool
