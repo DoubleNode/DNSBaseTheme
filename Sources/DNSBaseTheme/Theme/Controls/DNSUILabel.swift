@@ -46,7 +46,7 @@ import UIKit
         self.shadowOpacity = Float(style.shadow.opacity)
         self.shadowRadius = style.shadow.radius
         self.tintColor = style.tintColor.normal
-
+        
         if let style = style as? DNSThemeLabelStyle {
             self.font = style.font.normal
             self.paragraphStyle = style.paragraphStyle
@@ -78,7 +78,26 @@ import UIKit
         }
         self.attributedText = attributeString
     }
-
+    
+    public override var isEnabled: Bool {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+    public override var isHighlighted: Bool {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+    public var isSelected: Bool = false {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+    
     // MARK: - Private Variables -
     private let containerView = UIView()
     private var containerImageView = UIImageView()
@@ -86,7 +105,7 @@ import UIKit
     // MARK: - Public Attributes -
     override open var text: String? {
         didSet {
-//            self.attributedText = nil
+            //            self.attributedText = nil
             self.utilityRedrawAttributeString()
         }
     }
@@ -102,15 +121,15 @@ import UIKit
         }
     }
     // MARK: - Public Attributes (UIView) -
-//    @IBInspectable public var backgroundImage: UIImage? {
-//        get {
-//            return self.containerImageView.image
-//        }
-//        set {
-////            addShadowColorFromBackgroundImage()
-//            self.containerImageView.image = newValue
-//        }
-//    }
+    //    @IBInspectable public var backgroundImage: UIImage? {
+    //        get {
+    //            return self.containerImageView.image
+    //        }
+    //        set {
+    ////            addShadowColorFromBackgroundImage()
+    //            self.containerImageView.image = newValue
+    //        }
+    //    }
     override open var backgroundColor: UIColor? {
         didSet {
             guard let newValue = backgroundColor else { return }
@@ -194,11 +213,11 @@ import UIKit
             self.containerView.layer.shadowColor = shadowColor.cgColor
         }
     }
-//    @IBInspectable var shadowColorFromImage: Bool = false {
-//        didSet {
-//            addShadowColorFromBackgroundImage()
-//        }
-//    }
+    //    @IBInspectable var shadowColorFromImage: Bool = false {
+    //        didSet {
+    //            addShadowColorFromBackgroundImage()
+    //        }
+    //    }
     @IBInspectable open var strikeThru: Bool = false {
         didSet {
             self.utilityRedrawAttributeString()
@@ -214,7 +233,7 @@ import UIKit
             self.utilityRedrawAttributeString()
         }
     }
-
+    
     override open func prepareForInterfaceBuilder() {
         setupView()
     }
@@ -245,13 +264,13 @@ import UIKit
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         refreshViewLayout()
-//        addShadowColorFromBackgroundImage()
+        //        addShadowColorFromBackgroundImage()
         self.utilityRedrawAttributeString()
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
         refreshViewLayout()
-//        addShadowColorFromBackgroundImage()
+        //        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
         self.utilityRedrawAttributeString()
     }
@@ -268,7 +287,7 @@ import UIKit
         
         // Image View
         self.containerImageView.backgroundColor = UIColor.clear
-//self.containerImageView.image = backgroundImage
+        //self.containerImageView.image = backgroundImage
         self.containerImageView.layer.cornerRadius = cornerRadius
         self.containerImageView.layer.masksToBounds = true
         self.containerImageView.clipsToBounds = self.clipsToBounds
@@ -290,7 +309,7 @@ import UIKit
         self.containerImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         self.containerImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-
+        
         // add view constraints
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
         self.containerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -298,15 +317,15 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-//    private func addShadowColorFromBackgroundImage() {
-//        // Get the averageColor from the image for set the Shadow Color
-//        if shadowColorFormImage {
-//            let week = self
-//            DispatchQueue.main.async {
-//                week.shadowColor = (week.containerImageView.image?.averageColor)!
-//            }
-//        }
-//    }
+    //    private func addShadowColorFromBackgroundImage() {
+    //        // Get the averageColor from the image for set the Shadow Color
+    //        if shadowColorFormImage {
+    //            let week = self
+    //            DispatchQueue.main.async {
+    //                week.shadowColor = (week.containerImageView.image?.averageColor)!
+    //            }
+    //        }
+    //    }
     private func applyRadiusMaskFor() {
         guard cornerRadiusMulti else { return }
         
@@ -318,5 +337,62 @@ import UIKit
         let shape = CAShapeLayer()
         shape.path = path.cgPath
         layer.mask = shape
+    }
+    
+    func updateForState(using style: ThemeStyle) {
+        if self.isEnabled {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.normal
+            self.layer.borderColor = style.border.color.normal.cgColor
+            self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.tintColor = style.tintColor.normal
+            // DNSThemeLabelStyle
+            self.font = style.font.normal
+            self.shadowColor = style.shadow.color.normal
+            self.textColor = style.color.normal
+        } else {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.disabled
+            self.layer.borderColor = style.border.color.disabled.cgColor
+            self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.tintColor = style.tintColor.disabled
+            // DNSThemeLabelStyle
+            self.font = style.font.disabled
+            self.shadowColor = style.shadow.color.disabled
+            self.textColor = style.color.disabled
+        }
+        if self.isSelected {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.selected
+            self.layer.borderColor = style.border.color.selected.cgColor
+            self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.tintColor = style.tintColor.selected
+            // DNSThemeLabelStyle
+            self.font = style.font.selected
+            self.shadowColor = style.shadow.color.selected
+            self.textColor = style.color.selected
+        }
+        if self.isHighlighted {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.highlighted
+            self.layer.borderColor = style.border.color.highlighted.cgColor
+            self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.tintColor = style.tintColor.highlighted
+            // DNSThemeLabelStyle
+            self.font = style.font.highlighted
+            self.shadowColor = style.shadow.color.highlighted
+            self.textColor = style.color.highlighted
+        }
+        if self.isFocused {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.focused
+            self.layer.borderColor = style.border.color.focused.cgColor
+            self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.tintColor = style.tintColor.focused
+            // DNSThemeLabelStyle
+            self.font = style.font.focused
+            self.shadowColor = style.shadow.color.focused
+            self.textColor = style.color.focused
+        }
     }
 }

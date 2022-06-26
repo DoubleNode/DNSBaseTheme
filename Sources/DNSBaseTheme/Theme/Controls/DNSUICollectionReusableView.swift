@@ -48,6 +48,25 @@ import UIKit
         self.tintColor = style.tintColor.normal
     }
     
+    public var isEnabled: Bool = true {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+    public var isHighlighted: Bool = false {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+    public var isSelected: Bool = false {
+        didSet {
+            guard let style = style as? ThemeStyle else { return }
+            self.updateForState(using: style)
+        }
+    }
+
     // MARK: - Private Variables -
     private let containerView = UIView()
     private var containerImageView = UIImageView()
@@ -265,5 +284,47 @@ import UIKit
         let shape = CAShapeLayer()
         shape.path = path.cgPath
         layer.mask = shape
+    }
+
+    func updateForState(using style: ThemeStyle) {
+        if self.isEnabled {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.normal
+            self.layer.borderColor = style.border.color.normal.cgColor
+            self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.tintColor = style.tintColor.normal
+            // DNSThemeViewStyle
+        } else {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.disabled
+            self.layer.borderColor = style.border.color.disabled.cgColor
+            self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.tintColor = style.tintColor.disabled
+            // DNSThemeViewStyle
+        }
+        if self.isSelected {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.selected
+            self.layer.borderColor = style.border.color.selected.cgColor
+            self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.tintColor = style.tintColor.selected
+            // DNSThemeViewStyle
+        }
+        if self.isHighlighted {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.highlighted
+            self.layer.borderColor = style.border.color.highlighted.cgColor
+            self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.tintColor = style.tintColor.highlighted
+            // DNSThemeViewStyle
+        }
+        if self.isFocused {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.focused
+            self.layer.borderColor = style.border.color.focused.cgColor
+            self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.tintColor = style.tintColor.focused
+            // DNSThemeViewStyle
+        }
     }
 }
