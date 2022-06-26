@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.6
 //
 //  Package.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
@@ -27,6 +27,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.2.0"),
+        .package(url: "https://github.com/DoubleNodeOpen/AnimatedField.git", branch: "spm"),
         .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.8.0"),
         .package(url: "https://github.com/SwipeCellKit/SwipeCellKit", from: "2.7.1")
     ],
@@ -36,7 +37,7 @@ let package = Package(
         .target(
             name: "DNSBaseTheme",
             dependencies: [
-                "AlamofireImage", "DNSCore", "SwipeCellKit",
+                "AlamofireImage", "AnimatedField", "DNSCore", "SwipeCellKit",
         ]),
         .testTarget(
             name: "DNSBaseThemeTests",
