@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/AnimatedField.git",
       "state" : {
-        "branch" : "spm",
-        "revision" : "fd10f4ee012c5f17d59f29a0240f499747148ab3"
+        "revision" : "2d020e5d477c5e09a360865a950e64cc1cf45c73",
+        "version" : "2.5.0"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/swift-mask-textfield.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "a5546b7ae52f8d6e0b067c25606f3455056b92a5"
+        "revision" : "a5546b7ae52f8d6e0b067c25606f3455056b92a5",
+        "version" : "1.1.2"
       }
     },
     {
