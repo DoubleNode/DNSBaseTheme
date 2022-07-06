@@ -261,7 +261,7 @@ import UIKit
     
     private func addViewLayoutSubViews() {
         // add subViews
-        self.insertSubview(self.containerView, at: 0)
+//        self.insertSubview(self.containerView, at: 0)
         self.containerView.addSubview(self.containerImageView)
 
         self.containerView.isUserInteractionEnabled = false
