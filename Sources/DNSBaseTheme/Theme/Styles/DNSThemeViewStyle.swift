@@ -16,24 +16,23 @@ open class DNSThemeViewStyle: DNSThemeStyle {
     }
 
     override public init(styleName: String?,
-                         styleDescription: String? = "",
+                         styleSetName: String? = "",
                          backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),
                          tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         super.init(styleName: styleName,
-                   styleDescription: styleDescription,
+                   styleSetName: styleSetName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
-        guard let name = self.name else { return }
+        let name = self.name ?? "default"
         DNSThemeViewStyle.themeStyles[name] = self
-    }
-}
-public extension DNSThemeViewStyle {
-    enum Base {
-        public static var `default` = DNSThemeViewStyle(styleName: "default",
-                                                        styleDescription: "Base.default")
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeViewStyle.themeStyles[fullName] = self
+        }
     }
 }

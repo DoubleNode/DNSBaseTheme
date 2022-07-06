@@ -11,6 +11,7 @@ import UIKit
 open class DNSThemeStyle: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(name)
+        hasher.combine(setName)
         hasher.combine(backgroundColor)
         hasher.combine(border)
         hasher.combine(shadow)
@@ -18,6 +19,7 @@ open class DNSThemeStyle: Hashable {
     }
     public static func == (lhs: DNSThemeStyle, rhs: DNSThemeStyle) -> Bool {
         guard lhs.name == rhs.name else { return false }
+        guard lhs.setName == rhs.setName else { return false }
         guard lhs.backgroundColor == rhs.backgroundColor else { return false }
         guard lhs.border == rhs.border else { return false }
         guard lhs.shadow == rhs.shadow else { return false }
@@ -26,20 +28,20 @@ open class DNSThemeStyle: Hashable {
     }
     
     public var name: String?
-    public var description: String?
+    public var setName: String?
     public var backgroundColor: DNSUIColor
     public var border: DNSUIBorder
     public var shadow: DNSUIShadow
     public var tintColor: DNSUIColor
     
     public init(styleName: String?,
-                styleDescription: String? = "",
+                styleSetName: String? = "",
                 backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                 border: DNSUIBorder = DNSUIBorder(),
                 shadow: DNSUIShadow = DNSUIShadow(),
                 tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         self.name = styleName
-        self.description = styleDescription
+        self.setName = styleSetName
         self.backgroundColor = backgroundColor
         self.border = border
         self.shadow = shadow

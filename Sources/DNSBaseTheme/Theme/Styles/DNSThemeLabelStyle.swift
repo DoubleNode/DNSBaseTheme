@@ -24,7 +24,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public var zeplinLineHeight: Double?
     
     public init(styleName: String?,
-                styleDescription: String? = "",
+                styleSetName: String? = "",
                 color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
                 font: DNSUIFont = DNSUIFont(UIFont.Base.label),
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
@@ -44,18 +44,17 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
         self.strikeThruStyle = strikeThruStyle
         self.zeplinLineHeight = zeplinLineHeight
         super.init(styleName: styleName,
-                   styleDescription: styleDescription,
+                   styleSetName: styleSetName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
-        guard let name = self.name else { return }
+        let name = self.name ?? "default"
         DNSThemeLabelStyle.themeStyles[name] = self
-    }
-}
-public extension DNSThemeLabelStyle {
-    enum Base {
-        public static var `default` = DNSThemeLabelStyle(styleName: "default",
-                                                         styleDescription: "Base.default")
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeLabelStyle.themeStyles[fullName] = self
+        }
     }
 }

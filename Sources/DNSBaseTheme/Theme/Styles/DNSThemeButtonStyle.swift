@@ -23,7 +23,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
     public var titleShadow: DNSUIShadow
 
     public init(styleName: String?,
-                styleDescription: String? = "",
+                styleSetName: String? = "",
                 titleColor: DNSUIColor = DNSUIColor.Base.Button.title,
                 titleFont: DNSUIFont = DNSUIFont.Base.Button.title,
                 titleShadow: DNSUIShadow = DNSUIShadow.Base.Button.title,
@@ -41,18 +41,17 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
         self.titleFont = titleFont
         self.titleShadow = titleShadow
         super.init(styleName: styleName,
-                   styleDescription: styleDescription,
+                   styleSetName: styleSetName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
                    tintColor: tintColor)
-        guard let name = self.name else { return }
+        let name = self.name ?? "default"
         DNSThemeButtonStyle.themeStyles[name] = self
-    }
-}
-public extension DNSThemeButtonStyle {
-    enum Base {
-        public static var `default` = DNSThemeButtonStyle(styleName: "default",
-                                                          styleDescription: "Base.default")
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeButtonStyle.themeStyles[fullName] = self
+        }
     }
 }
