@@ -238,13 +238,15 @@ import UIKit
         setupView()
     }
     func setupView() {
-        self.layer.borderColor = borderColor.cgColor
-        self.layer.borderWidth = borderWidth
-        self.layer.cornerRadius = cornerRadius
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowRadius = shadowRadius
-        self.layer.shadowColor = shadowColor?.cgColor
-        self.layer.shadowOffset = shadowOffset
+        self.backgroundColor = self.backgroundColor
+        self.clipsToBounds = self.clipsToBounds
+        self.borderColor = self.borderColor
+        self.borderWidth = self.borderWidth
+        self.cornerRadius = self.cornerRadius
+        self.shadowOpacity = self.shadowOpacity
+        self.shadowRadius = self.shadowRadius
+        self.shadowOffset = self.shadowOffset
+        self.shadowColor = self.shadowColor
         applyRadiusMaskFor()
     }
     
