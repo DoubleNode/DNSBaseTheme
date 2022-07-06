@@ -209,12 +209,12 @@ import UIKit
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         refreshViewLayout()
-        //        addShadowColorFromBackgroundImage()
+//        addShadowColorFromBackgroundImage()
     }
     override open func layoutSubviews() {
         super.layoutSubviews()
         refreshViewLayout()
-        //        addShadowColorFromBackgroundImage()
+//        addShadowColorFromBackgroundImage()
         applyRadiusMaskFor()
     }
     
@@ -231,6 +231,7 @@ import UIKit
         self.layer.shadowRadius = shadowRadius
         
         // Container View
+        self.sendSubviewToBack(self.containerView)
         self.containerView.clipsToBounds = self.clipsToBounds
         self.containerView.layer.masksToBounds = true
         self.containerView.layer.cornerRadius = cornerRadius
@@ -247,6 +248,7 @@ import UIKit
     private func addViewLayoutSubViews() {
         // add subViews
         self.insertSubview(self.containerView, at: 0)
+        self.sendSubviewToBack(self.containerView)
         self.containerView.addSubview(self.containerImageView)
         
         self.containerView.isUserInteractionEnabled = false
