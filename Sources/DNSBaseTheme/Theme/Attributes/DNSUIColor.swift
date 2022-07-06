@@ -102,5 +102,9 @@ public extension DNSUIColor {
             public static var background = DNSUIColor(UIColor.Base.Label.background)
             public static var text = DNSUIColor(UIColor.Base.Label.text)
         }
+        public enum View {
+            public static var background = DNSUIColor(UIColor.Base.View.background)
+            public static var tint = DNSUIColor(UIColor.Base.View.tint)
+        }
     }
 }

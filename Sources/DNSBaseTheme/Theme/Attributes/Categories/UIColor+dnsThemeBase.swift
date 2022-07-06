@@ -87,5 +87,9 @@ public extension UIColor {
             public static var strikeThru = UIColor.label
             public static var text = UIColor.label
         }
+        public enum View {
+            public static var background = UIColor.systemBackground
+            public static var tint = UIColor.systemBlue
+        }
     }
 }
