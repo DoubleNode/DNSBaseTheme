@@ -16,7 +16,7 @@ import UIKit
     public typealias ThemeStyle = DNSThemeViewStyle
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
-            guard oldValue.name != style.name else { return }
+            guard oldValue != style else { return }
             self.utilityApply(style)
             self.styleName = style.name ?? ""
         }
