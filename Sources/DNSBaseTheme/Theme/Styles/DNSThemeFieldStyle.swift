@@ -26,7 +26,8 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
     public var titleColor: DNSUIColor
     public var titleFont: DNSUIFont
 
-    public init(styleName: String? = nil,
+    public init(styleName: String?,
+                styleDescription: String? = "",
                 alertColor: DNSUIColor = DNSUIColor.Base.Field.alert,
                 alertFont: DNSUIFont = DNSUIFont.Base.Field.alert,
                 counterColor: DNSUIColor = DNSUIColor.Base.Field.counter,
@@ -52,6 +53,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
         self.titleColor = titleColor
         self.titleFont = titleFont
         super.init(styleName: styleName,
+                   styleDescription: styleDescription,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
@@ -62,6 +64,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
 }
 public extension DNSThemeFieldStyle {
     enum Base {
-        public static var `default` = DNSThemeFieldStyle()
+        public static var `default` = DNSThemeFieldStyle(styleName: "default",
+                                                         styleDescription: "Base.default")
     }
 }

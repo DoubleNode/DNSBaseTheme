@@ -22,7 +22,8 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
     public var titleFont: DNSUIFont
     public var titleShadow: DNSUIShadow
 
-    public init(styleName: String? = nil,
+    public init(styleName: String?,
+                styleDescription: String? = "",
                 titleColor: DNSUIColor = DNSUIColor.Base.Button.title,
                 titleFont: DNSUIFont = DNSUIFont.Base.Button.title,
                 titleShadow: DNSUIShadow = DNSUIShadow.Base.Button.title,
@@ -40,6 +41,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
         self.titleFont = titleFont
         self.titleShadow = titleShadow
         super.init(styleName: styleName,
+                   styleDescription: styleDescription,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
@@ -50,6 +52,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
 }
 public extension DNSThemeButtonStyle {
     enum Base {
-        public static var `default` = DNSThemeButtonStyle()
+        public static var `default` = DNSThemeButtonStyle(styleName: "default",
+                                                          styleDescription: "Base.default")
     }
 }

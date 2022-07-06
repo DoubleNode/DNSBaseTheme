@@ -26,17 +26,20 @@ open class DNSThemeStyle: Hashable {
     }
     
     public var name: String?
+    public var description: String?
     public var backgroundColor: DNSUIColor
     public var border: DNSUIBorder
     public var shadow: DNSUIShadow
     public var tintColor: DNSUIColor
     
     public init(styleName: String?,
+                styleDescription: String? = "",
                 backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                 border: DNSUIBorder = DNSUIBorder(),
                 shadow: DNSUIShadow = DNSUIShadow(),
                 tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         self.name = styleName
+        self.description = styleDescription
         self.backgroundColor = backgroundColor
         self.border = border
         self.shadow = shadow

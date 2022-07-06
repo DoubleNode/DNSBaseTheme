@@ -15,12 +15,14 @@ open class DNSThemeViewStyle: DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeViewStyle.default
     }
 
-    override public init(styleName: String? = nil,
+    override public init(styleName: String?,
+                         styleDescription: String? = "",
                          backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),
                          tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         super.init(styleName: styleName,
+                   styleDescription: styleDescription,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
@@ -31,6 +33,7 @@ open class DNSThemeViewStyle: DNSThemeStyle {
 }
 public extension DNSThemeViewStyle {
     enum Base {
-        public static var `default` = DNSThemeViewStyle()
+        public static var `default` = DNSThemeViewStyle(styleName: "default",
+                                                        styleDescription: "Base.default")
     }
 }
