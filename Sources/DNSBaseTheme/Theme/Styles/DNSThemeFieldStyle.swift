@@ -38,10 +38,10 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
                 textFont: DNSUIFont = DNSUIFont.Base.Field.text,
                 titleColor: DNSUIColor = DNSUIColor.Base.Field.title,
                 titleFont: DNSUIFont = DNSUIFont.Base.Field.title,
-                backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
-                border: DNSUIBorder = DNSUIBorder.Base.button,
-                shadow: DNSUIShadow = DNSUIShadow.Base.button,
-                tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
+                backgroundColor: DNSUIColor = DNSUIColor.Base.Field.background,
+                border: DNSUIBorder = DNSUIBorder.Base.field,
+                shadow: DNSUIShadow = DNSUIShadow.Base.field,
+                tintColor: DNSUIColor = DNSUIColor.Base.Field.tint) {
         self.alertColor = alertColor
         self.alertFont = alertFont
         self.counterColor = counterColor

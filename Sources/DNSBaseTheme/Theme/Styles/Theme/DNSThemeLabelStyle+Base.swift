@@ -1,5 +1,5 @@
 //
-//  DNSThemeLabelStyle.swift
+//  DNSThemeLabelStyle+Base.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
 //
 //  Created by Darren Ehlers.

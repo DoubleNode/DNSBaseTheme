@@ -58,8 +58,3 @@ open class DNSUIBorder: Hashable {
         self.width = width
     }
 }
-public extension DNSUIBorder {
-    enum Base {
-        public static var button = DNSUIBorder(color: DNSUIColor.Base.Button.border)
-    }
-}

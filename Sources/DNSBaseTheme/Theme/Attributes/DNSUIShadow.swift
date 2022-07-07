@@ -39,12 +39,3 @@ open class DNSUIShadow: Hashable {
         self.radius = radius
     }
 }
-public extension DNSUIShadow {
-    enum Base {
-        public static var button = DNSUIShadow(color: DNSUIColor.Base.Button.shadow)
-        public enum Button {
-            public static var subtitle = DNSUIShadow(color: DNSUIColor.Base.Button.subtitleShadow)
-            public static var title = DNSUIShadow(color: DNSUIColor.Base.Button.titleShadow)
-        }
-    }
-}
