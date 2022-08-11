@@ -6,6 +6,7 @@
 //  Copyright © 2021 - 2016 DoubleNode.com. All rights reserved.
 //
 
+import DNSCore
 import UIKit
 
 public extension DNSUIColor {
