@@ -13,16 +13,16 @@ public extension AnimatedFieldFormat {
     mutating func dnsApply(_ style: DNSThemeFieldStyle) {
         // DNSThemeStyle
         // DNSThemeFieldStyle
-        self.alertColor = style.alertColor.normal
-        self.alertFont = style.alertFont.normal
-        self.counterColor = style.counterColor.normal
-        self.counterFont = style.counterFont.normal
-        self.highlightColor = style.highlightColor.normal
+        self.alertColor = style.alertStyle.color.normal
+        self.alertFont = style.alertStyle.font.normal
+        self.counterColor = style.counterStyle.color.normal
+        self.counterFont = style.counterStyle.font.normal
+        self.highlightColor = style.textStyle.color.highlighted
         self.lineColor = style.lineColor.normal
-        self.textColor = style.textColor.normal
-        self.textFont = style.textFont.normal
-        self.titleColor = style.titleColor.normal
-        self.titleFont = style.titleFont.normal
+        self.textColor = style.textStyle.color.normal
+        self.textFont = style.textStyle.font.normal
+        self.titleColor = style.titleStyle.color.normal
+        self.titleFont = style.titleStyle.font.normal
     }
     mutating func updateForState(isEnabled: Bool,
                                  isFocused: Bool,
@@ -32,71 +32,71 @@ public extension AnimatedFieldFormat {
         if isEnabled {
             // DNSThemeStyle
             // DNSThemeFieldStyle
-            self.alertColor = style.alertColor.normal
-            self.alertFont = style.alertFont.normal
-            self.counterColor = style.counterColor.normal
-            self.counterFont = style.counterFont.normal
-            self.highlightColor = style.highlightColor.normal
+            self.alertColor = style.alertStyle.color.normal
+            self.alertFont = style.alertStyle.font.normal
+            self.counterColor = style.counterStyle.color.normal
+            self.counterFont = style.counterStyle.font.normal
+            self.highlightColor = style.textStyle.color.highlighted
             self.lineColor = style.lineColor.normal
-            self.textColor = style.textColor.normal
-            self.textFont = style.textFont.normal
-            self.titleColor = style.titleColor.normal
-            self.titleFont = style.titleFont.normal
+            self.textColor = style.textStyle.color.normal
+            self.textFont = style.textStyle.font.normal
+            self.titleColor = style.titleStyle.color.normal
+            self.titleFont = style.titleStyle.font.normal
         } else {
             // DNSThemeStyle
             // DNSThemeFieldStyle
-            self.alertColor = style.alertColor.disabled
-            self.alertFont = style.alertFont.disabled
-            self.counterColor = style.counterColor.disabled
-            self.counterFont = style.counterFont.disabled
-            self.highlightColor = style.highlightColor.disabled
+            self.alertColor = style.alertStyle.color.disabled
+            self.alertFont = style.alertStyle.font.disabled
+            self.counterColor = style.counterStyle.color.disabled
+            self.counterFont = style.counterStyle.font.disabled
+            self.highlightColor = style.textStyle.color.highlighted
             self.lineColor = style.lineColor.disabled
-            self.textColor = style.textColor.disabled
-            self.textFont = style.textFont.disabled
-            self.titleColor = style.titleColor.disabled
-            self.titleFont = style.titleFont.disabled
+            self.textColor = style.textStyle.color.disabled
+            self.textFont = style.textStyle.font.disabled
+            self.titleColor = style.titleStyle.color.disabled
+            self.titleFont = style.titleStyle.font.disabled
         }
         if isSelected {
             // DNSThemeStyle
             // DNSThemeFieldStyle
-            self.alertColor = style.alertColor.selected
-            self.alertFont = style.alertFont.selected
-            self.counterColor = style.counterColor.selected
-            self.counterFont = style.counterFont.selected
-            self.highlightColor = style.highlightColor.selected
+            self.alertColor = style.alertStyle.color.selected
+            self.alertFont = style.alertStyle.font.selected
+            self.counterColor = style.counterStyle.color.selected
+            self.counterFont = style.counterStyle.font.selected
+            self.highlightColor = style.textStyle.color.highlighted
             self.lineColor = style.lineColor.selected
-            self.textColor = style.textColor.selected
-            self.textFont = style.textFont.selected
-            self.titleColor = style.titleColor.selected
-            self.titleFont = style.titleFont.selected
+            self.textColor = style.textStyle.color.selected
+            self.textFont = style.textStyle.font.selected
+            self.titleColor = style.titleStyle.color.selected
+            self.titleFont = style.titleStyle.font.selected
         }
         if isHighlighted {
             // DNSThemeStyle
             // DNSThemeFieldStyle
-            self.alertColor = style.alertColor.highlighted
-            self.alertFont = style.alertFont.highlighted
-            self.counterColor = style.counterColor.highlighted
-            self.counterFont = style.counterFont.highlighted
-            self.highlightColor = style.highlightColor.highlighted
+            self.alertColor = style.alertStyle.color.highlighted
+            self.alertFont = style.alertStyle.font.highlighted
+            self.counterColor = style.counterStyle.color.highlighted
+            self.counterFont = style.counterStyle.font.highlighted
+            self.highlightColor = style.textStyle.color.highlighted
             self.lineColor = style.lineColor.highlighted
-            self.textColor = style.textColor.highlighted
-            self.textFont = style.textFont.highlighted
-            self.titleColor = style.titleColor.highlighted
-            self.titleFont = style.titleFont.highlighted
+            self.textColor = style.textStyle.color.highlighted
+            self.textFont = style.textStyle.font.highlighted
+            self.titleColor = style.titleStyle.color.highlighted
+            self.titleFont = style.titleStyle.font.highlighted
         }
         if isFocused {
             // DNSThemeStyle
             // DNSThemeFieldStyle
-            self.alertColor = style.alertColor.focused
-            self.alertFont = style.alertFont.focused
-            self.counterColor = style.counterColor.focused
-            self.counterFont = style.counterFont.focused
-            self.highlightColor = style.highlightColor.focused
+            self.alertColor = style.alertStyle.color.focused
+            self.alertFont = style.alertStyle.font.focused
+            self.counterColor = style.counterStyle.color.focused
+            self.counterFont = style.counterStyle.font.focused
+            self.highlightColor = style.textStyle.color.highlighted
             self.lineColor = style.lineColor.focused
-            self.textColor = style.textColor.focused
-            self.textFont = style.textFont.focused
-            self.titleColor = style.titleColor.focused
-            self.titleFont = style.titleFont.focused
+            self.textColor = style.textStyle.color.focused
+            self.textFont = style.textStyle.font.focused
+            self.titleColor = style.titleStyle.color.focused
+            self.titleFont = style.titleStyle.font.focused
         }
     }
 }

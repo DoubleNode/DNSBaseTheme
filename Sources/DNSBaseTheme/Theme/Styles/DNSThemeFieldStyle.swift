@@ -16,43 +16,28 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeFieldStyle.default
     }
 
-    public var alertColor: DNSUIColor
-    public var alertFont: DNSUIFont
-    public var counterColor: DNSUIColor
-    public var counterFont: DNSUIFont
-    public var highlightColor: DNSUIColor
+    public var alertStyle: DNSThemeLabelStyle
+    public var counterStyle: DNSThemeLabelStyle
     public var lineColor: DNSUIColor
-    public var textColor: DNSUIColor
-    public var textFont: DNSUIFont
-    public var titleColor: DNSUIColor
-    public var titleFont: DNSUIFont
+    public var textStyle: DNSThemeLabelStyle
+    public var titleStyle: DNSThemeLabelStyle
 
     public init(styleName: String?,
                 styleSetName: String? = "",
-                alertColor: DNSUIColor = DNSUIColor.Base.Field.alert,
-                alertFont: DNSUIFont = DNSUIFont.Base.Field.alert,
-                counterColor: DNSUIColor = DNSUIColor.Base.Field.counter,
-                counterFont: DNSUIFont = DNSUIFont.Base.Field.counter,
-                highlightColor: DNSUIColor = DNSUIColor.Base.Field.highlight,
+                alertStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.alert,
+                counterStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.counter,
                 lineColor: DNSUIColor = DNSUIColor.Base.Field.line,
-                textColor: DNSUIColor = DNSUIColor.Base.Field.text,
-                textFont: DNSUIFont = DNSUIFont.Base.Field.text,
-                titleColor: DNSUIColor = DNSUIColor.Base.Field.title,
-                titleFont: DNSUIFont = DNSUIFont.Base.Field.title,
+                textStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.text,
+                titleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.title,
                 backgroundColor: DNSUIColor = DNSUIColor.Base.Field.background,
                 border: DNSUIBorder = DNSUIBorder.Base.field,
                 shadow: DNSUIShadow = DNSUIShadow.Base.field,
                 tintColor: DNSUIColor = DNSUIColor.Base.Field.tint) {
-        self.alertColor = alertColor
-        self.alertFont = alertFont
-        self.counterColor = counterColor
-        self.counterFont = counterFont
-        self.highlightColor = highlightColor
+        self.alertStyle = alertStyle
+        self.counterStyle = counterStyle
         self.lineColor = lineColor
-        self.textColor = textColor
-        self.textFont = textFont
-        self.titleColor = titleColor
-        self.titleFont = titleFont
+        self.textStyle = textStyle
+        self.titleStyle = titleStyle
         super.init(styleName: styleName,
                    styleSetName: styleSetName,
                    backgroundColor: backgroundColor,

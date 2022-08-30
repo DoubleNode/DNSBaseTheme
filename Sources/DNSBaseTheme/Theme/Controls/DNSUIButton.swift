@@ -49,16 +49,16 @@ import UIKit
 
         if let style = style as? DNSThemeButtonStyle {
             self.updateForState(using: style)
-            self.setTitleColor(style.titleColor.normal, for: UIControl.State.normal)
-            self.setTitleColor(style.titleColor.disabled, for: UIControl.State.disabled)
-            self.setTitleColor(style.titleColor.focused, for: UIControl.State.focused)
-            self.setTitleColor(style.titleColor.highlighted, for: UIControl.State.highlighted)
-            self.setTitleColor(style.titleColor.selected, for: UIControl.State.selected)
-            self.setTitleShadowColor(style.titleShadow.color.normal, for: UIControl.State.normal)
-            self.setTitleShadowColor(style.titleShadow.color.disabled, for: UIControl.State.disabled)
-            self.setTitleShadowColor(style.titleShadow.color.focused, for: UIControl.State.focused)
-            self.setTitleShadowColor(style.titleShadow.color.highlighted, for: UIControl.State.highlighted)
-            self.setTitleShadowColor(style.titleShadow.color.selected, for: UIControl.State.selected)
+            self.setTitleColor(style.titleStyle.color.normal, for: UIControl.State.normal)
+            self.setTitleColor(style.titleStyle.color.disabled, for: UIControl.State.disabled)
+            self.setTitleColor(style.titleStyle.color.focused, for: UIControl.State.focused)
+            self.setTitleColor(style.titleStyle.color.highlighted, for: UIControl.State.highlighted)
+            self.setTitleColor(style.titleStyle.color.selected, for: UIControl.State.selected)
+            self.setTitleShadowColor(style.titleStyle.shadow.color.normal, for: UIControl.State.normal)
+            self.setTitleShadowColor(style.titleStyle.shadow.color.disabled, for: UIControl.State.disabled)
+            self.setTitleShadowColor(style.titleStyle.shadow.color.focused, for: UIControl.State.focused)
+            self.setTitleShadowColor(style.titleStyle.shadow.color.highlighted, for: UIControl.State.highlighted)
+            self.setTitleShadowColor(style.titleStyle.shadow.color.selected, for: UIControl.State.selected)
         }
     }
 

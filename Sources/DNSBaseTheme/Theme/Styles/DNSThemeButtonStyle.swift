@@ -16,31 +16,19 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeButtonStyle.default
     }
 
-    public var subtitleColor: DNSUIColor
-    public var subtitleFont: DNSUIFont
-    public var subtitleShadow: DNSUIShadow
-    public var titleColor: DNSUIColor
-    public var titleFont: DNSUIFont
-    public var titleShadow: DNSUIShadow
+    public var subtitleStyle: DNSThemeLabelStyle
+    public var titleStyle: DNSThemeLabelStyle
 
     public init(styleName: String?,
                 styleSetName: String? = "",
-                titleColor: DNSUIColor = DNSUIColor.Base.Button.title,
-                titleFont: DNSUIFont = DNSUIFont.Base.Button.title,
-                titleShadow: DNSUIShadow = DNSUIShadow.Base.Button.title,
-                subtitleColor: DNSUIColor = DNSUIColor.Base.Button.subtitle,
-                subtitleFont: DNSUIFont = DNSUIFont.Base.Button.subtitle,
-                subtitleShadow: DNSUIShadow = DNSUIShadow.Base.Button.subtitle,
+                titleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.title,
+                subtitleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.subtitle,
                 backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
                 border: DNSUIBorder = DNSUIBorder.Base.button,
                 shadow: DNSUIShadow = DNSUIShadow.Base.button,
                 tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
-        self.subtitleColor = subtitleColor
-        self.subtitleFont = subtitleFont
-        self.subtitleShadow = subtitleShadow
-        self.titleColor = titleColor
-        self.titleFont = titleFont
-        self.titleShadow = titleShadow
+        self.titleStyle = titleStyle
+        self.subtitleStyle = subtitleStyle
         super.init(styleName: styleName,
                    styleSetName: styleSetName,
                    backgroundColor: backgroundColor,

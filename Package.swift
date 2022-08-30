@@ -28,7 +28,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.2.0"),
         .package(url: "https://github.com/DoubleNodeOpen/AnimatedField.git", from: "2.5.16"),
-        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.9.21"),
+        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.9.29"),
         .package(url: "https://github.com/SwipeCellKit/SwipeCellKit", from: "2.7.1")
     ],
     targets: [

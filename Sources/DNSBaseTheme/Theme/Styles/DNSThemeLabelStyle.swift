@@ -19,30 +19,24 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public var color: DNSUIColor
     public var font: DNSUIFont
     public var paragraphStyle: NSMutableParagraphStyle
-    public var strikeThru: Bool
-    public var strikeThruColor: DNSUIColor
-    public var strikeThruStyle: NSUnderlineStyle
+    public var strikeThru: DNSUIStrikeThru
     public var zeplinLineHeight: Double?
     
     public init(styleName: String?,
                 styleSetName: String? = "",
-                color: DNSUIColor = DNSUIColor(UIColor.Base.Label.text),
-                font: DNSUIFont = DNSUIFont(UIFont.Base.label),
+                color: DNSUIColor = DNSUIColor.Base.Label.text,
+                font: DNSUIFont = DNSUIFont.Base.label,
                 paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle(),
-                strikeThru: Bool = false,
-                strikeThruColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.strikeThru),
-                strikeThruStyle: NSUnderlineStyle = NSUnderlineStyle.single,
+                strikeThru: DNSUIStrikeThru = DNSUIStrikeThru.Base.Label.strikeThru,
                 zeplinLineHeight: Double? = nil,
-                shadow: DNSUIShadow = DNSUIShadow(),
-                backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.Label.background),
-                border: DNSUIBorder = DNSUIBorder(),
-                tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
+                shadow: DNSUIShadow = DNSUIShadow.Base.Label.text,
+                backgroundColor: DNSUIColor = DNSUIColor.Base.Label.background,
+                border: DNSUIBorder = DNSUIBorder.Base.label,
+                tintColor: DNSUIColor = DNSUIColor.Base.Label.tint) {
         self.color = color
         self.font = font
         self.paragraphStyle = paragraphStyle
         self.strikeThru = strikeThru
-        self.strikeThruColor = strikeThruColor
-        self.strikeThruStyle = strikeThruStyle
         self.zeplinLineHeight = zeplinLineHeight
         super.init(styleName: styleName,
                    styleSetName: styleSetName,

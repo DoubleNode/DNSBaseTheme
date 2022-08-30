@@ -37,10 +37,10 @@ open class DNSThemeStyle: Hashable {
     
     public init(styleName: String?,
                 styleSetName: String? = "",
-                backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
-                border: DNSUIBorder = DNSUIBorder(),
-                shadow: DNSUIShadow = DNSUIShadow(),
-                tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
+                backgroundColor: DNSUIColor = DNSUIColor.Base.background,
+                border: DNSUIBorder = DNSUIBorder.Base.default,
+                shadow: DNSUIShadow = DNSUIShadow.Base.default,
+                tintColor: DNSUIColor = DNSUIColor.Base.tint) {
         self.name = styleName
         self.setName = styleSetName
         self.backgroundColor = backgroundColor

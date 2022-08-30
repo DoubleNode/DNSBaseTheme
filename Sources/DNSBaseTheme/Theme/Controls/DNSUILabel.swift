@@ -50,9 +50,9 @@ import UIKit
         if let style = style as? DNSThemeLabelStyle {
             self.font = style.font.normal
             self.paragraphStyle = style.paragraphStyle
-            self.strikeThru = style.strikeThru
-            self.strikeThruColor = style.strikeThruColor.normal
-            self.strikeThruStyle = style.strikeThruStyle
+            self.strikeThru = style.strikeThru.enabled.normal
+            self.strikeThruColor = style.strikeThru.color.normal
+            self.strikeThruStyle = style.strikeThru.style
             self.textColor = style.color.normal
             if style.zeplinLineHeight != nil {
                 self.zeplinLineHeight = style.zeplinLineHeight!
