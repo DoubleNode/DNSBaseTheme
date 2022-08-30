@@ -19,6 +19,8 @@ public extension UIButton {
         self.layer.shadowOffset = style.shadow.offset
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
+        self.tintColor = style.tintColor.normal
+        // DNSThemeButtonStyle
         if #available(iOS 15.0, *) {
             self.subtitleLabel?.textColor = style.subtitleStyle.color.normal
             self.subtitleLabel?.font = style.subtitleStyle.font.normal
@@ -27,11 +29,8 @@ public extension UIButton {
 //            self.subtitleLabel?.strikeThru = style.subtitleStyle.strikeThru.enabled.normal
 //            self.subtitleLabel?.strikeThruColor = style.subtitleStyle.strikeThru.color.normal
 //            self.subtitleLabel?.strikeThruStyle = style.subtitleStyle.strikeThru.style
-
         }
-        self.tintColor = style.tintColor.normal
         self.titleLabel?.font = style.titleStyle.font.normal
-        // DNSThemeButtonStyle
         self.setTitleColor(style.titleStyle.color.normal, for: UIControl.State.normal)
         self.setTitleColor(style.titleStyle.color.disabled, for: UIControl.State.disabled)
         self.setTitleColor(style.titleStyle.color.focused, for: UIControl.State.focused)

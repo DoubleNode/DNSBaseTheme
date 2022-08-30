@@ -114,7 +114,7 @@ public extension UIColor {
             public static var border = UIColor.clear
 //            public static var counter = UIColor.quaternaryLabel
 //            public static var highlight = UIColor.systemBlue
-            public static var line = UIColor.tertiaryLabel
+            public static var line = UIColor.darkGray
             public static var shadow = UIColor.clear
 //            public static var text = UIColor.label
             public static var tint = UIColor.systemBlue
