@@ -38,7 +38,9 @@ let package = Package(
             name: "DNSBaseTheme",
             dependencies: [
                 "AlamofireImage", "AnimatedField", "DNSCore", "SwipeCellKit",
-        ]),
+            ],
+            resources: [.process("Resources/DNSUIAnimatedField.xib")]
+        ),
         .testTarget(
             name: "DNSBaseThemeTests",
             dependencies: ["DNSBaseTheme"]),
