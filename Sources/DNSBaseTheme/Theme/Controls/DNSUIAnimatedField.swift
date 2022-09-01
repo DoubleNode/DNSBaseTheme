@@ -201,6 +201,7 @@ import UIKit
     // MARK: - Life Cycle -
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        _ = dnsLoadNib()
         setupView()
         addViewLayoutSubViews()
         refreshViewLayout()
