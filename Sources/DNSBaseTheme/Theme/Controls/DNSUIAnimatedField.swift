@@ -205,6 +205,10 @@ import UIKit
         addViewLayoutSubViews()
         refreshViewLayout()
     }
+    override open func commonInit() {
+        self.dnsLoadNib(from: Bundle.module)
+        super.commonInit()
+    }
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         refreshViewLayout()
