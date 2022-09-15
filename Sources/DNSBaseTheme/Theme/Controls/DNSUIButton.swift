@@ -97,7 +97,7 @@ import UIKit
 //    }
     override open var backgroundColor: UIColor? {
         willSet {
-            guard newValue != backgroundColor else { return }
+//            guard newValue != backgroundColor else { return }
             containerView.backgroundColor = newValue
             guard let newValue else { return }
             if newValue != UIColor.clear { backgroundColor = nil }
@@ -194,17 +194,9 @@ import UIKit
     
     override open func prepareForInterfaceBuilder() {
         setupView()
+        refreshViewLayout()
     }
     func setupView() {
-        self.backgroundColor = self.backgroundColor
-        self.clipsToBounds = self.clipsToBounds
-        self.borderColor = self.borderColor
-        self.borderWidth = self.borderWidth
-        self.cornerRadius = self.cornerRadius
-        self.shadowOpacity = self.shadowOpacity
-        self.shadowRadius = self.shadowRadius
-        self.shadowOffset = self.shadowOffset
-        self.shadowColor = self.shadowColor
         applyRadiusMaskFor()
     }
     
@@ -235,6 +227,16 @@ import UIKit
     
     // MARK: - Private Methods -
     private func refreshViewLayout() {
+        self.backgroundColor = self.backgroundColor
+        self.clipsToBounds = self.clipsToBounds
+        self.borderColor = self.borderColor
+        self.borderWidth = self.borderWidth
+        self.cornerRadius = self.cornerRadius
+        self.shadowOpacity = self.shadowOpacity
+        self.shadowRadius = self.shadowRadius
+        self.shadowOffset = self.shadowOffset
+        self.shadowColor = self.shadowColor
+
         // View
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius
