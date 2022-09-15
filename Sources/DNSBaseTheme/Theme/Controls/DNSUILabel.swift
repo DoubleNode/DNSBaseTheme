@@ -131,9 +131,10 @@ import UIKit
     //        }
     //    }
     override open var backgroundColor: UIColor? {
-        didSet {
-            guard let newValue = backgroundColor else { return }
+        willSet {
+            guard newValue != backgroundColor else { return }
             containerView.backgroundColor = newValue
+            guard let newValue else { return }
             if newValue != UIColor.clear { backgroundColor = nil }
         }
     }
