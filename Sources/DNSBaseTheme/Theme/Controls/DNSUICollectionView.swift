@@ -180,6 +180,7 @@ import UIKit
     
     override open func prepareForInterfaceBuilder() {
         setupView()
+        refreshViewLayout()
     }
     func setupView() {
         self.backgroundColor = self.backgroundColor
