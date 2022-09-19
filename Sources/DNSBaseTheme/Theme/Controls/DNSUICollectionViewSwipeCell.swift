@@ -84,10 +84,15 @@ import UIKit
 //    }
     override open var backgroundColor: UIColor? {
         willSet {
-            guard newValue != backgroundColor else { return }
-            containerView.backgroundColor = newValue
-            guard let newValue else { return }
-            if newValue != UIColor.clear { backgroundColor = nil }
+            guard newValue != nil else { return }
+            if containerView.backgroundColor != newValue {
+                containerView.backgroundColor = newValue
+            }
+        }
+        didSet {
+            if containerView.backgroundColor != UIColor.clear {
+                backgroundColor = nil
+            }
         }
     }
     override open var clipsToBounds: Bool {
