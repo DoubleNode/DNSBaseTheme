@@ -122,21 +122,27 @@ import UIKit
         }
     }
     // MARK: - Public Attributes (UIView) -
-    //    @IBInspectable public var backgroundImage: UIImage? {
-    //        get {
-    //            return self.containerImageView.image
-    //        }
-    //        set {
-    ////            addShadowColorFromBackgroundImage()
-    //            self.containerImageView.image = newValue
-    //        }
-    //    }
+//    @IBInspectable public var backgroundImage: UIImage? {
+//        get {
+//            return self.containerImageView.image
+//        }
+//        set {
+////            addShadowColorFromBackgroundImage()
+//            self.containerImageView.image = newValue
+//        }
+//    }
     override open var backgroundColor: UIColor? {
         willSet {
+            guard newValue != nil else { return }
+            if containerView.backgroundColor != newValue {
+                containerView.backgroundColor = newValue
+            }
+            var newValue = newValue
+            if newValue != UIColor.clear {
+                newValue = nil
+            }
             guard newValue != backgroundColor else { return }
-            containerView.backgroundColor = newValue
-            guard let newValue else { return }
-            if newValue != UIColor.clear { backgroundColor = nil }
+            backgroundColor = nil
         }
     }
     override open var clipsToBounds: Bool {
