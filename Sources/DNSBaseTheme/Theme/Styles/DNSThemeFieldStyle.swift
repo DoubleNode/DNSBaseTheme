@@ -26,6 +26,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
     public var alertPosition: AnimatedFieldAlertPosition    // .top
     public var invalidCharacters: String    // "`^¨"
     public var lineColor: DNSUIColor    // UIColor.lightGray
+    public var placeholderColor: DNSUIColor
     public var textFieldHeight: CGFloat // 36.0
     public var visibleOnImage: UIImage  // UIImage(dnsSystemSymbol: SFSymbol.eye)
     public var visibleOffImage: UIImage  // UIImage(dnsSystemSymbol: SFSymbol.eyeSlash)
@@ -48,6 +49,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
                 alertPosition: AnimatedFieldAlertPosition = .top,
                 invalidCharacters: String = "`^¨",
                 lineColor: DNSUIColor = DNSUIColor.Base.Field.line,
+                placeholderColor: DNSUIColor = DNSUIColor.Base.Field.placeholder,
                 textFieldHeight: CGFloat = 36.0,
                 visibleOnImage: UIImage = UIImage(dnsSystemSymbol: SFSymbol.eye),
                 visibleOffImage: UIImage = UIImage(dnsSystemSymbol: SFSymbol.eyeSlash),
@@ -70,6 +72,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
         self.alertPosition = alertPosition
         self.invalidCharacters = invalidCharacters
         self.lineColor = lineColor
+        self.placeholderColor = placeholderColor
         self.textFieldHeight = textFieldHeight
         self.visibleOnImage = visibleOnImage
         self.visibleOffImage = visibleOffImage

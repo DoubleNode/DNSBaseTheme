@@ -45,6 +45,7 @@ public extension AnimatedField {
         newFormat.countDown = style.countDown.normal
         newFormat.counterAnimation = style.counterAnimation.normal
         newFormat.highlightColor = style.textStyle.color.highlighted
+        newFormat.placeholderColor = style.placeholderColor.normal
         newFormat.textFieldHeight = style.textFieldHeight
         self.format = newFormat
     }
