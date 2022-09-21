@@ -112,6 +112,7 @@ public extension UIColor {
             public static var background = UIColor.clear
             public static var border = UIColor.clear
             public static var line = UIColor.darkGray
+            public static var placeholder = UIColor.lightGray.withAlphaComponent(0.8)
             public static var shadow = UIColor.clear
             public static var tint = UIColor.systemBlue
             public enum Alert {

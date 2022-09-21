@@ -91,6 +91,7 @@ public extension DNSUIColor {
             public static var border = DNSUIColor(UIColor.Base.Field.border)
 //            public static var counter = DNSUIColor(UIColor.Base.Field.counter)
             public static var line = DNSUIColor(UIColor.Base.Field.line)
+            public static var placeholder = DNSUIColor(UIColor.Base.Field.placeholder)
             public static var shadow = DNSUIColor(UIColor.Base.Field.shadow)
 //            public static var text = DNSUIColor(UIColor.Base.Field.text)
             public static var tint = DNSUIColor(UIColor.Base.Field.tint)
