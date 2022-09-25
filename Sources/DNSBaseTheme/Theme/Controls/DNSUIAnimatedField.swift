@@ -17,11 +17,11 @@ import UIKit
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             guard oldValue != style else { return }
+            self.styleName = style.fullName
             self.utilityApply(style)
-            self.styleName = style.name ?? ""
         }
     }
-    @IBInspectable open var styleName: String = "" {
+    @IBInspectable open var styleName: String = ThemeStyle.default.fullName {
         didSet {
             guard oldValue != styleName else { return }
             self.utilityApply(styleName)
@@ -210,6 +210,7 @@ import UIKit
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+        utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }

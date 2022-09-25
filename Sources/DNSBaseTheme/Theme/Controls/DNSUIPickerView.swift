@@ -16,17 +16,17 @@ import UIKit
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             guard oldValue != style else { return }
+            self.styleName = style.fullName
             self.utilityApply(style)
-            self.styleName = style.name ?? ""
         }
     }
-    @IBInspectable open var styleName: String = "" {
+    @IBInspectable open var styleName: String = ThemeStyle.default.fullName {
         didSet {
             guard oldValue != styleName else { return }
             self.utilityApply(styleName)
         }
     }
-    
+
     // MARK: - Utility Methods -
     open func utilityApply(_ styleName: String) {
         self.style = ThemeStyle.themeStyle(named: styleName)
@@ -205,12 +205,14 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+        utilityApply(style)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
