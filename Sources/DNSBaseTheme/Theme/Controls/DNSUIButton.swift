@@ -16,13 +16,11 @@ import UIKit
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             guard oldValue != style else { return }
-            self.utilityApply(style)
-            self.styleName = style.name ?? ""
+            self.styleName = style.fullName
         }
     }
     @IBInspectable open var styleName: String = "" {
         didSet {
-            guard oldValue != styleName else { return }
             self.utilityApply(styleName)
         }
     }
@@ -219,12 +217,14 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        utilityApply(styleName)
         addViewLayoutSubViews()
         refreshViewLayout()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+        utilityApply(styleName)
         addViewLayoutSubViews()
         refreshViewLayout()
     }

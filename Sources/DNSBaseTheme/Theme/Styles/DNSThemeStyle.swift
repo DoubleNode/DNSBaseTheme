@@ -29,6 +29,14 @@ open class DNSThemeStyle: Hashable {
     }
     
     public var name: String?
+    public var fullName: String {
+        let name = self.name ?? "default"
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            return "\(setName).\(name)"
+        }
+        return name
+    }
     public var setName: String?
     public var backgroundColor: DNSUIColor
     public var border: DNSUIBorder
