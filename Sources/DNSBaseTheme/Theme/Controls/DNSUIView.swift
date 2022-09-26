@@ -82,17 +82,18 @@ import UIKit
 //        }
 //    }
     override open var backgroundColor: UIColor? {
-        willSet {
-            guard newValue != nil else { return }
-            if containerView.backgroundColor != newValue {
-                containerView.backgroundColor = newValue
-            }
-        }
+//        willSet {
+//            guard newValue != nil else { return }
+//            if containerView.backgroundColor != newValue {
+//                containerView.backgroundColor = newValue
+//            }
+//        }
         didSet {
-            guard backgroundColor != nil else { return }
-            if containerView.backgroundColor != UIColor.clear {
-                backgroundColor = nil
-            }
+            containerView.backgroundColor = backgroundColor
+//            guard backgroundColor != nil else { return }
+//            if containerView.backgroundColor != UIColor.clear {
+//                backgroundColor = nil
+//            }
         }
     }
     override open var clipsToBounds: Bool {
