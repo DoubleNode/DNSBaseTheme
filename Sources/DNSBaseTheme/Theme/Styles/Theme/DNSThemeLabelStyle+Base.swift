@@ -7,10 +7,23 @@
 //
 
 import DNSCore
+import DNSCoreThreading
 import UIKit
 
 public extension DNSThemeLabelStyle {
     enum Base {
+        public static func initThemes() {
+            DNSThemeLabelStyle.initThemes(block: createThemes)
+        }
+        public static let createThemes: DNSBlock = {
+            _ = Self.default
+            _ = Self.Button.subtitle
+            _ = Self.Button.title
+            _ = Self.Field.alert
+            _ = Self.Field.counter
+            _ = Self.Field.text
+            _ = Self.Field.title
+        }
         public static var `default` = DNSThemeLabelStyle(styleName: "default",
                                                          styleSetName: "Base")
         public enum Button {

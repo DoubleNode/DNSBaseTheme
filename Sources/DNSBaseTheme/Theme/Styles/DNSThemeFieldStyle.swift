@@ -8,6 +8,7 @@
 
 import AnimatedField
 import DNSCore
+import DNSCoreThreading
 import SFSymbol
 import UIKit
 
@@ -16,6 +17,13 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
     public static var `default`: DNSThemeFieldStyle = DNSThemeFieldStyle.Base.default
     public static func themeStyle(named styleName: String) -> DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeFieldStyle.default
+    }
+    public static var initThemesBlocks: [DNSBlock] = [
+        DNSThemeFieldStyle.Base.createThemes,
+    ]
+    public static func initThemes(block: @escaping DNSBlock) {
+        initThemesBlocks.append(block)
+        initThemesBlocks.forEach { $0() }
     }
 
     public var alertStyle: DNSThemeLabelStyle

@@ -7,6 +7,7 @@
 //
 
 import DNSCore
+import DNSCoreThreading
 import UIKit
 
 open class DNSThemeViewStyle: DNSThemeStyle {
@@ -14,6 +15,13 @@ open class DNSThemeViewStyle: DNSThemeStyle {
     public static var `default`: DNSThemeViewStyle = DNSThemeViewStyle.Base.default
     public static func themeStyle(named styleName: String) -> DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeViewStyle.default
+    }
+    public static var initThemesBlocks: [DNSBlock] = [
+        DNSThemeViewStyle.Base.createThemes,
+    ]
+    public static func initThemes(block: @escaping DNSBlock) {
+        initThemesBlocks.append(block)
+        initThemesBlocks.forEach { $0() }
     }
 
     override public init(styleName: String?,
