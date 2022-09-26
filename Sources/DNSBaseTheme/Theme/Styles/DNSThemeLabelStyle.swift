@@ -7,6 +7,7 @@
 //
 
 import DNSCore
+import DNSCoreThreading
 import UIKit
 
 open class DNSThemeLabelStyle: DNSThemeStyle {
@@ -14,6 +15,13 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     public static var `default`: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.default
     public static func themeStyle(named styleName: String) -> DNSThemeStyle {
         return themeStyles[styleName] ?? DNSThemeLabelStyle.default
+    }
+    public static var initThemesBlocks: [DNSBlock] = [
+        DNSThemeLabelStyle.Base.createThemes,
+    ]
+    public static func initThemes(block: @escaping DNSBlock) {
+        initThemesBlocks.append(block)
+        initThemesBlocks.forEach { $0() }
     }
 
     public var color: DNSUIColor
