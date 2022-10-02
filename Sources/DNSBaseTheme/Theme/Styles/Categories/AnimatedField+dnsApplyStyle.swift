@@ -51,6 +51,13 @@ public extension AnimatedField {
     }
     func updateForState(using style: DNSThemeFieldStyle) {
         var newFormat = self.format
+        newFormat.invalidCharacters = style.invalidCharacters
+        newFormat.alertPosition = style.alertPosition
+        newFormat.visibleOnImage = style.visibleOnImage
+        newFormat.visibleOffImage = style.visibleOffImage
+        newFormat.highlightColor = style.textStyle.color.highlighted
+        newFormat.placeholderColor = style.placeholderColor.normal
+        newFormat.textFieldHeight = style.textFieldHeight
         if self.isEnabled {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.normal
