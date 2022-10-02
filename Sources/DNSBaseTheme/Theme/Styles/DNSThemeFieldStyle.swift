@@ -54,7 +54,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
                 counterStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.counter,
                 textStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.text,
                 titleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Field.title,
-                alertPosition: AnimatedFieldAlertPosition = .top,
+                alertPosition: AnimatedFieldAlertPosition = .bottom,
                 invalidCharacters: String = "`^¨",
                 lineColor: DNSUIColor = DNSUIColor.Base.Field.line,
                 placeholderColor: DNSUIColor = DNSUIColor.Base.Field.placeholder,
