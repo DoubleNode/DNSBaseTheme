@@ -48,6 +48,12 @@ import UIKit
         self.tintColor = style.tintColor.normal
     }
     
+    // MARK: - Properties -
+    public var isSelectable: Bool { self.canSelect() }
+
+    // MARK: - Methods -
+    open func canSelect() -> Bool { false }
+
     public var isEnabled: Bool = true {
         didSet {
             guard let style = style as? ThemeStyle else { return }
@@ -60,13 +66,20 @@ import UIKit
             self.updateForState(using: style)
         }
     }
+    private var _isSelected: Bool = false
     public override var isSelected: Bool {
-        didSet {
+        get { _isSelected }
+        set {
+            if newValue && !isSelectable {
+                _isSelected = false
+            } else {
+                _isSelected = newValue
+            }
             guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
-    
+
     // MARK: - Private Variables -
     private let containerView = UIView()
     private var containerImageView = UIImageView()
