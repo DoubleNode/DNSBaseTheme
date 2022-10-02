@@ -111,7 +111,13 @@ public extension UIColor {
         public enum Field {
             public static var background = UIColor.clear
             public static var border = UIColor.clear
-            public static var line = UIColor.darkGray
+            public enum Line {
+                public static var disabled = UIColor.gray
+                public static var focused = UIColor.label
+                public static var highlighted = UIColor.label
+                public static var normal = UIColor.label
+                public static var selected = UIColor.label
+            }
             public static var placeholder = UIColor.lightGray.withAlphaComponent(0.8)
             public static var shadow = UIColor.clear
             public static var tint = UIColor.systemBlue

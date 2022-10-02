@@ -86,16 +86,16 @@ public extension DNSUIColor {
             }
         }
         public enum Field {
-//            public static var alert = DNSUIColor(UIColor.Base.Field.alert)
             public static var background = DNSUIColor(UIColor.Base.Field.background)
             public static var border = DNSUIColor(UIColor.Base.Field.border)
-//            public static var counter = DNSUIColor(UIColor.Base.Field.counter)
-            public static var line = DNSUIColor(UIColor.Base.Field.line)
+            public static var line = DNSUIColor(UIColor.Base.Field.Line.normal,
+                                                disabled: UIColor.Base.Field.Line.disabled,
+                                                focused: UIColor.Base.Field.Line.focused,
+                                                highlighted: UIColor.Base.Field.Line.highlighted,
+                                                selected: UIColor.Base.Field.Line.selected)
             public static var placeholder = DNSUIColor(UIColor.Base.Field.placeholder)
             public static var shadow = DNSUIColor(UIColor.Base.Field.shadow)
-//            public static var text = DNSUIColor(UIColor.Base.Field.text)
             public static var tint = DNSUIColor(UIColor.Base.Field.tint)
-//            public static var title = DNSUIColor(UIColor.Base.Field.title)
             public enum Alert {
                 public static var background = DNSUIColor(UIColor.Base.Field.Alert.Background.normal,
                                                           disabled: UIColor.Base.Field.Alert.Background.disabled,
