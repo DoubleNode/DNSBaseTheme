@@ -34,7 +34,7 @@ Once you have your Swift package set up, adding Alamofire as a dependency is as 
 
 ```swift
 dependencies: [
-.package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.9.40")
+.package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.9.41")
 ]
 ```
 
@@ -42,8 +42,8 @@ dependencies: [
 
 -   ActiveLabel v1.1.5+
 -   AlamofireImage v4.2.0+
--   AnimatedField v2.5.25+
--   DNSCore v1.9.42+
+-   AnimatedField v2.5.27+
+-   DNSCore v1.9.43+
 -   SwipeCellKit v2.7.1+
 
 ## Credits

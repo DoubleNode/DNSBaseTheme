@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/AnimatedField.git",
       "state" : {
-        "revision" : "a9c676f2ce1e60174dca39a2d91a2466a6699a06",
-        "version" : "2.5.25"
+        "revision" : "c369c80a46529baf56c3e5fb9ac971aa20769cdc",
+        "version" : "2.5.27"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCore.git",
       "state" : {
-        "revision" : "7672854e2eb07348259af4ceaea2eb81a49aa4c3",
-        "version" : "1.9.42"
+        "revision" : "f79f056cae904d26f22e219017ca5153b2d7bb13",
+        "version" : "1.9.43"
       }
     },
     {
