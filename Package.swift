@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 //
 //  Package.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
@@ -12,10 +12,10 @@ import PackageDescription
 let package = Package(
     name: "DNSBaseTheme",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13),
+        .iOS(.v15),
+        .tvOS(.v15),
         .macOS(.v10_15),
-        .watchOS(.v6),
+        .watchOS(.v9),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -28,8 +28,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/optonaut/ActiveLabel.swift", from: "1.1.5"),
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.2.0"),
-        .package(url: "https://github.com/DoubleNodeOpen/AnimatedField.git", from: "2.5.27"),
-        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.9.43"),
+        .package(url: "https://github.com/DoubleNodeOpen/AnimatedField.git", from: "2.5.29"),
+        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.10.0"),
         .package(url: "https://github.com/SwipeCellKit/SwipeCellKit", from: "2.7.1")
     ],
     targets: [
