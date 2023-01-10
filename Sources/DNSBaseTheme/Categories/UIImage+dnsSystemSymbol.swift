@@ -10,7 +10,10 @@ import SFSymbol
 import UIKit
 
 public extension UIImage {
-    convenience init(dnsSystemSymbol symbol: SFSymbol) {
-        self.init(systemName: symbol.rawValue)!
+    convenience init?(dnsSystemSymbol symbol: SFSymbol) {
+        self.init(systemName: symbol.rawValue)
+    }
+    convenience init?<T: RawRepresentable>(dnsSymbol: T) where T.RawValue == String {
+        self.init(systemName: dnsSymbol.rawValue)
     }
 }
