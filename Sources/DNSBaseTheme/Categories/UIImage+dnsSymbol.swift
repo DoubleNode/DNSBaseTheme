@@ -1,5 +1,5 @@
 //
-//  UIImage+dnsSystemSymbol.swift
+//  UIImage+dnsSymbol.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSBaseTheme
 //
 //  Created by Darren Ehlers.
@@ -10,9 +10,6 @@ import SFSymbol
 import UIKit
 
 public extension UIImage {
-    convenience init?(dnsSystemSymbol symbol: SFSymbol) {
-        self.init(systemName: symbol.rawValue)
-    }
     convenience init?<T: RawRepresentable>(dnsSymbol: T) where T.RawValue == String {
         self.init(systemName: dnsSymbol.rawValue)
     }
