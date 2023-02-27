@@ -118,6 +118,7 @@ public extension UIColor {
                 public static var normal = UIColor.label
                 public static var selected = UIColor.label
             }
+            public static var pickerText = UIColor.white
             public static var placeholder = UIColor.lightGray.withAlphaComponent(0.8)
             public static var shadow = UIColor.clear
             public static var tint = UIColor.systemBlue

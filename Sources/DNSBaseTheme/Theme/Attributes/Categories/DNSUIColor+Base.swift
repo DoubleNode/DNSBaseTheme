@@ -93,6 +93,7 @@ public extension DNSUIColor {
                                                 focused: UIColor.Base.Field.Line.focused,
                                                 highlighted: UIColor.Base.Field.Line.highlighted,
                                                 selected: UIColor.Base.Field.Line.selected)
+            public static var pickerText = DNSUIColor(UIColor.Base.Field.pickerText)
             public static var placeholder = DNSUIColor(UIColor.Base.Field.placeholder)
             public static var shadow = DNSUIColor(UIColor.Base.Field.shadow)
             public static var tint = DNSUIColor(UIColor.Base.Field.tint)

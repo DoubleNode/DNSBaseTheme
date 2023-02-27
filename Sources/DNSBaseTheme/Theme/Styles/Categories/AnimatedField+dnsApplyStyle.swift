@@ -29,6 +29,7 @@ public extension AnimatedField {
         newFormat.textFont = style.textStyle.font.normal
         newFormat.counterFont = style.counterStyle.font.normal
         newFormat.lineColor = style.lineColor.normal
+        newFormat.pickerTextColor = style.pickerTextColor.normal
         newFormat.titleColor = style.titleStyle.color.normal
         newFormat.textColor = style.textStyle.color.normal
         newFormat.counterColor = style.counterStyle.color.normal
@@ -70,6 +71,7 @@ public extension AnimatedField {
             newFormat.textFont = style.textStyle.font.normal
             newFormat.counterFont = style.counterStyle.font.normal
             newFormat.lineColor = style.lineColor.normal
+            newFormat.pickerTextColor = style.pickerTextColor.normal
             newFormat.titleColor = style.titleStyle.color.normal
             newFormat.textColor = style.textStyle.color.normal
             newFormat.counterColor = style.counterStyle.color.normal
@@ -94,6 +96,7 @@ public extension AnimatedField {
             newFormat.textFont = style.textStyle.font.disabled
             newFormat.counterFont = style.counterStyle.font.disabled
             newFormat.lineColor = style.lineColor.disabled
+            newFormat.pickerTextColor = style.pickerTextColor.disabled
             newFormat.titleColor = style.titleStyle.color.disabled
             newFormat.textColor = style.textStyle.color.disabled
             newFormat.counterColor = style.counterStyle.color.disabled
@@ -119,6 +122,7 @@ public extension AnimatedField {
             newFormat.textFont = style.textStyle.font.selected
             newFormat.counterFont = style.counterStyle.font.selected
             newFormat.lineColor = style.lineColor.selected
+            newFormat.pickerTextColor = style.pickerTextColor.selected
             newFormat.titleColor = style.titleStyle.color.selected
             newFormat.textColor = style.textStyle.color.selected
             newFormat.counterColor = style.counterStyle.color.selected
@@ -144,6 +148,7 @@ public extension AnimatedField {
             newFormat.textFont = style.textStyle.font.highlighted
             newFormat.counterFont = style.counterStyle.font.highlighted
             newFormat.lineColor = style.lineColor.highlighted
+            newFormat.pickerTextColor = style.pickerTextColor.highlighted
             newFormat.titleColor = style.titleStyle.color.highlighted
             newFormat.textColor = style.textStyle.color.highlighted
             newFormat.counterColor = style.counterStyle.color.highlighted
@@ -169,6 +174,7 @@ public extension AnimatedField {
             newFormat.textFont = style.textStyle.font.focused
             newFormat.counterFont = style.counterStyle.font.focused
             newFormat.lineColor = style.lineColor.focused
+            newFormat.pickerTextColor = style.pickerTextColor.focused
             newFormat.titleColor = style.titleStyle.color.focused
             newFormat.textColor = style.textStyle.color.focused
             newFormat.counterColor = style.counterStyle.color.focused
