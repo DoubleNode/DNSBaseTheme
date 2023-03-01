@@ -74,6 +74,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
                 backgroundColor: DNSUIColor = DNSUIColor.Base.Field.background,
                 border: DNSUIBorder = DNSUIBorder.Base.field,
                 shadow: DNSUIShadow = DNSUIShadow.Base.field,
+                skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Field.skeletonable,
                 tintColor: DNSUIColor = DNSUIColor.Base.Field.tint) {
         self.alertStyle = alertStyle
         self.counterStyle = counterStyle
@@ -100,6 +101,7 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
+                   skeletonable: skeletonable,
                    tintColor: tintColor)
         let name = self.name ?? "default"
         DNSThemeFieldStyle.themeStyles[name] = self

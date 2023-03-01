@@ -8,6 +8,7 @@
 
 import AnimatedField
 import Foundation
+import SkeletonView
 
 public extension AnimatedField {
     func dnsApply(_ style: DNSThemeFieldStyle) {
@@ -20,6 +21,7 @@ public extension AnimatedField {
         self.layer.shadowOffset = style.shadow.offset
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
+        self.isSkeletonable = style.skeletonable.normal
         self.tintColor = style.tintColor.normal
         // DNSThemeFieldStyle
         var newFormat = self.format
@@ -64,6 +66,7 @@ public extension AnimatedField {
             self.backgroundColor = style.backgroundColor.normal
             self.layer.borderColor = style.border.color.normal.cgColor
             self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.isSkeletonable = style.skeletonable.normal
             self.tintColor = style.tintColor.normal
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.normal
@@ -89,6 +92,7 @@ public extension AnimatedField {
             self.backgroundColor = style.backgroundColor.disabled
             self.layer.borderColor = style.border.color.disabled.cgColor
             self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.isSkeletonable = style.skeletonable.disabled
             self.tintColor = style.tintColor.disabled
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.disabled
@@ -115,6 +119,7 @@ public extension AnimatedField {
             self.backgroundColor = style.backgroundColor.selected
             self.layer.borderColor = style.border.color.selected.cgColor
             self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.isSkeletonable = style.skeletonable.selected
             self.tintColor = style.tintColor.selected
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.selected
@@ -141,6 +146,7 @@ public extension AnimatedField {
             self.backgroundColor = style.backgroundColor.highlighted
             self.layer.borderColor = style.border.color.highlighted.cgColor
             self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.isSkeletonable = style.skeletonable.highlighted
             self.tintColor = style.tintColor.highlighted
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.highlighted
@@ -167,6 +173,7 @@ public extension AnimatedField {
             self.backgroundColor = style.backgroundColor.focused
             self.layer.borderColor = style.border.color.focused.cgColor
             self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.isSkeletonable = style.skeletonable.focused
             self.tintColor = style.tintColor.focused
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.focused

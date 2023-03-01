@@ -6,6 +6,7 @@
 //  Copyright © 2021 - 2016 DoubleNode.com. All rights reserved.
 //
 
+import SkeletonView
 import UIKit
 
 public extension UIButton {
@@ -19,6 +20,7 @@ public extension UIButton {
         self.layer.shadowOffset = style.shadow.offset
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
+        self.isSkeletonable = style.skeletonable.normal
         self.tintColor = style.tintColor.normal
         // DNSThemeButtonStyle
         if #available(iOS 15.0, *) {
@@ -54,6 +56,7 @@ public extension UIButton {
                 self.subtitleLabel?.shadowColor = style.subtitleStyle.shadow.color.normal
                 self.subtitleLabel?.shadowOffset = style.subtitleStyle.shadow.offset
             }
+            self.isSkeletonable = style.skeletonable.normal
             self.tintColor = style.tintColor.normal
             self.titleLabel?.font = style.titleStyle.font.normal
         } else {
@@ -66,6 +69,7 @@ public extension UIButton {
                 self.subtitleLabel?.shadowColor = style.subtitleStyle.shadow.color.disabled
                 self.subtitleLabel?.shadowOffset = style.subtitleStyle.shadow.offset
             }
+            self.isSkeletonable = style.skeletonable.disabled
             self.tintColor = style.tintColor.disabled
             self.titleLabel?.font = style.titleStyle.font.disabled
         }
@@ -79,6 +83,7 @@ public extension UIButton {
                 self.subtitleLabel?.shadowColor = style.subtitleStyle.shadow.color.selected
                 self.subtitleLabel?.shadowOffset = style.subtitleStyle.shadow.offset
             }
+            self.isSkeletonable = style.skeletonable.selected
             self.tintColor = style.tintColor.selected
             self.titleLabel?.font = style.titleStyle.font.selected
         }
@@ -92,6 +97,7 @@ public extension UIButton {
                 self.subtitleLabel?.shadowColor = style.subtitleStyle.shadow.color.highlighted
                 self.subtitleLabel?.shadowOffset = style.subtitleStyle.shadow.offset
             }
+            self.isSkeletonable = style.skeletonable.highlighted
             self.tintColor = style.tintColor.highlighted
             self.titleLabel?.font = style.titleStyle.font.highlighted
         }
@@ -105,6 +111,7 @@ public extension UIButton {
                 self.subtitleLabel?.shadowColor = style.subtitleStyle.shadow.color.focused
                 self.subtitleLabel?.shadowOffset = style.subtitleStyle.shadow.offset
             }
+            self.isSkeletonable = style.skeletonable.focused
             self.tintColor = style.tintColor.focused
             self.titleLabel?.font = style.titleStyle.font.focused
         }

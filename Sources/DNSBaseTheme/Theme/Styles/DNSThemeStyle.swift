@@ -41,6 +41,7 @@ open class DNSThemeStyle: Hashable {
     public var backgroundColor: DNSUIColor
     public var border: DNSUIBorder
     public var shadow: DNSUIShadow
+    public var skeletonable: DNSUIEnabled
     public var tintColor: DNSUIColor
     
     public init(styleName: String?,
@@ -48,12 +49,14 @@ open class DNSThemeStyle: Hashable {
                 backgroundColor: DNSUIColor = DNSUIColor.Base.background,
                 border: DNSUIBorder = DNSUIBorder.Base.default,
                 shadow: DNSUIShadow = DNSUIShadow.Base.default,
+                skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable,
                 tintColor: DNSUIColor = DNSUIColor.Base.tint) {
         self.name = styleName
         self.setName = styleSetName
         self.backgroundColor = backgroundColor
         self.border = border
         self.shadow = shadow
+        self.skeletonable = skeletonable
         self.tintColor = tintColor
     }
 }

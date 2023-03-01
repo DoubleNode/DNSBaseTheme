@@ -6,6 +6,7 @@
 //  Copyright © 2021 - 2016 DoubleNode.com. All rights reserved.
 //
 
+import SkeletonView
 import UIKit
 
 public extension UIView {
@@ -19,6 +20,7 @@ public extension UIView {
         self.layer.shadowOffset = style.shadow.offset
         self.layer.shadowOpacity = style.shadow.opacity
         self.layer.shadowRadius = style.shadow.radius
+        self.isSkeletonable = style.skeletonable.normal
         self.tintColor = style.tintColor.normal
         // DNSThemeViewStyle
     }

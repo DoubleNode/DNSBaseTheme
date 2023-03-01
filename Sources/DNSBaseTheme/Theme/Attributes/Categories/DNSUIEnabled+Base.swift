@@ -11,7 +11,9 @@ import UIKit
 
 public extension DNSUIEnabled {
     enum Base {
+        public static var skeletonable = DNSUIEnabled(false)
         public enum Button {
+            public static var skeletonable = DNSUIEnabled(false)
             public enum Subtitle {
                 public static var strikeThru = DNSUIEnabled(false)
             }
@@ -20,6 +22,7 @@ public extension DNSUIEnabled {
             }
         }
         public enum Field {
+            public static var skeletonable = DNSUIEnabled(false)
             public enum Alert {
                 public static var strikeThru = DNSUIEnabled(false)
             }
@@ -34,6 +37,7 @@ public extension DNSUIEnabled {
             }
         }
         public enum Label {
+            public static var skeletonable = DNSUIEnabled(false)
             public static var strikeThru = DNSUIEnabled(false)
         }
     }

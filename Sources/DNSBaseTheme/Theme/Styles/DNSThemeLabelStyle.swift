@@ -40,6 +40,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
                 shadow: DNSUIShadow = DNSUIShadow.Base.Label.text,
                 backgroundColor: DNSUIColor = DNSUIColor.Base.Label.background,
                 border: DNSUIBorder = DNSUIBorder.Base.label,
+                skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Label.skeletonable,
                 tintColor: DNSUIColor = DNSUIColor.Base.Label.tint) {
         self.color = color
         self.font = font
@@ -51,6 +52,7 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
+                   skeletonable: skeletonable,
                    tintColor: tintColor)
         let name = self.name ?? "default"
         DNSThemeLabelStyle.themeStyles[name] = self

@@ -34,6 +34,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
                 backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
                 border: DNSUIBorder = DNSUIBorder.Base.button,
                 shadow: DNSUIShadow = DNSUIShadow.Base.button,
+                skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Button.skeletonable,
                 tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
         self.titleStyle = titleStyle
         self.subtitleStyle = subtitleStyle
@@ -42,6 +43,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
+                   skeletonable: skeletonable,
                    tintColor: tintColor)
         let name = self.name ?? "default"
         DNSThemeButtonStyle.themeStyles[name] = self

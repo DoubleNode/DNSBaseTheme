@@ -29,12 +29,14 @@ open class DNSThemeViewStyle: DNSThemeStyle {
                          backgroundColor: DNSUIColor = DNSUIColor(UIColor.Base.background),
                          border: DNSUIBorder = DNSUIBorder(),
                          shadow: DNSUIShadow = DNSUIShadow(),
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable,
                          tintColor: DNSUIColor = DNSUIColor(UIColor.Base.tint)) {
         super.init(styleName: styleName,
                    styleSetName: styleSetName,
                    backgroundColor: backgroundColor,
                    border: border,
                    shadow: shadow,
+                   skeletonable: skeletonable,
                    tintColor: tintColor)
         let name = self.name ?? "default"
         DNSThemeViewStyle.themeStyles[name] = self
