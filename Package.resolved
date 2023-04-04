@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
-        "version" : "5.6.2"
+        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
+        "version" : "5.6.4"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/AnimatedField.git",
       "state" : {
-        "revision" : "2e61d2762c5210995d8c288fdc58948f6af8fd94",
-        "version" : "2.5.46"
+        "revision" : "03f8d6c17a4cf6f0bd8bbd9687a4c4198929b741",
+        "version" : "2.5.48"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCore.git",
       "state" : {
-        "revision" : "da868b57056f6a5f36aa7b175ed377ec150a003c",
-        "version" : "1.10.44"
+        "revision" : "7df16f91c476c0d265dad6e99a92a74b97844ebb",
+        "version" : "1.10.46"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Nirma/SFSymbol",
       "state" : {
-        "revision" : "d6680f79d5b293ddfc4640ad6d4101697426e840",
-        "version" : "2.0.0"
+        "revision" : "c18f260b9b69d1c24e40ad367e8a589563fb8f3d",
+        "version" : "2.2.0"
       }
     },
     {
