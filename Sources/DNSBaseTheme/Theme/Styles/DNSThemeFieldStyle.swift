@@ -63,8 +63,47 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
     required public init() {
         super.init()
     }
-    required public init(styleName: String?, styleSetName: String? = "", backgroundColor: DNSUIColor = DNSUIColor.Base.background, border: DNSUIBorder = DNSUIBorder.Base.default, shadow: DNSUIShadow = DNSUIShadow.Base.default, skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable, tintColor: DNSUIColor = DNSUIColor.Base.tint) {
-        fatalError("init(styleName:styleSetName:backgroundColor:border:shadow:skeletonable:tintColor:) has not been implemented")
+    required public init(styleName: String?,
+                         styleSetName: String? = "",
+                         backgroundColor: DNSUIColor = DNSUIColor.Base.Field.background,
+                         border: DNSUIBorder = DNSUIBorder.Base.field,
+                         shadow: DNSUIShadow = DNSUIShadow.Base.field,
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Field.skeletonable,
+                         tintColor: DNSUIColor = DNSUIColor.Base.Field.tint) {
+        self.alertStyle = DNSThemeLabelStyle.Base.Field.alert
+        self.counterStyle = DNSThemeLabelStyle.Base.Field.counter
+        self.textStyle = DNSThemeLabelStyle.Base.Field.text
+        self.titleStyle = DNSThemeLabelStyle.Base.Field.title
+        self.alertPosition = .bottom
+        self.invalidCharacters = "`^¨"
+        self.lineColor = DNSUIColor.Base.Field.line
+        self.pickerTextColor = DNSUIColor.Base.Field.pickerText
+        self.placeholderColor = DNSUIColor.Base.Field.placeholder
+        self.textFieldHeight = 36.0
+        self.visibleOnImage = UIImage(dnsSymbol: SFSymbol.eye)!
+        self.visibleOffImage = UIImage(dnsSymbol: SFSymbol.Eye.slash)!
+        self.alertEnabled = DNSUIEnabled(true)
+        self.alertFieldActive = DNSUIEnabled(true)
+        self.alertLineActive = DNSUIEnabled(true)
+        self.alertTitleActive = DNSUIEnabled(true)
+        self.countDown = DNSUIEnabled(false)
+        self.counterAnimation = DNSUIEnabled(false)
+        self.counterEnabled = DNSUIEnabled(false)
+        self.titleAlwaysVisible = DNSUIEnabled(false)
+        super.init(styleName: styleName,
+                   styleSetName: styleSetName,
+                   backgroundColor: backgroundColor,
+                   border: border,
+                   shadow: shadow,
+                   skeletonable: skeletonable,
+                   tintColor: tintColor)
+        let name = self.name ?? "default"
+        DNSThemeFieldStyle.themeStyles[name] = self
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeFieldStyle.themeStyles[fullName] = self
+        }
     }
     required public init(styleName: String?,
                          styleSetName: String? = "",
@@ -174,22 +213,22 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
         let alertPositionData = self.string(from: data[field(.alertPosition)]as Any?) ?? "bottom"
         self.alertPosition = alertPositionData == "bottom" ? .bottom : .top
         self.invalidCharacters = self.string(from: data[field(.invalidCharacters)]as Any?) ?? self.invalidCharacters
-        self.lineColor = self.dnsUIColor(from: data[field(.lineColor)] as Any?) ?? self.lineColor
-        self.pickerTextColor = self.dnsUIColor(from: data[field(.pickerTextColor)] as Any?) ?? self.pickerTextColor
-        self.placeholderColor = self.dnsUIColor(from: data[field(.placeholderColor)] as Any?) ?? self.placeholderColor
+        self.lineColor = self.dnscolor(from: data[field(.lineColor)] as Any?) ?? self.lineColor
+        self.pickerTextColor = self.dnscolor(from: data[field(.pickerTextColor)] as Any?) ?? self.pickerTextColor
+        self.placeholderColor = self.dnscolor(from: data[field(.placeholderColor)] as Any?) ?? self.placeholderColor
         self.textFieldHeight = CGFloat(self.float(from: data[field(.textFieldHeight)]as Any?) ?? Float(self.textFieldHeight))
         let visibleOnImageData = self.string(from: data[field(.visibleOnImage)]as Any?) ?? "eye"
         self.visibleOnImage = UIImage(systemName: visibleOnImageData) ?? self.visibleOnImage
         let visibleOffImageData = self.string(from: data[field(.visibleOffImage)]as Any?) ?? "eye.slash"
         self.visibleOffImage = UIImage(systemName: visibleOffImageData) ?? self.visibleOffImage
-        self.alertEnabled = self.dnsUIEnabled(from: data[field(.alertEnabled)] as Any?) ?? self.alertEnabled
-        self.alertFieldActive = self.dnsUIEnabled(from: data[field(.alertFieldActive)] as Any?) ?? self.alertFieldActive
-        self.alertLineActive = self.dnsUIEnabled(from: data[field(.alertLineActive)] as Any?) ?? self.alertLineActive
-        self.alertTitleActive = self.dnsUIEnabled(from: data[field(.alertTitleActive)] as Any?) ?? self.alertTitleActive
-        self.countDown = self.dnsUIEnabled(from: data[field(.countDown)] as Any?) ?? self.countDown
-        self.counterAnimation = self.dnsUIEnabled(from: data[field(.counterAnimation)] as Any?) ?? self.counterAnimation
-        self.counterEnabled = self.dnsUIEnabled(from: data[field(.counterEnabled)] as Any?) ?? self.counterEnabled
-        self.titleAlwaysVisible = self.dnsUIEnabled(from: data[field(.titleAlwaysVisible)] as Any?) ?? self.titleAlwaysVisible
+        self.alertEnabled = self.dnsenabled(from: data[field(.alertEnabled)] as Any?) ?? self.alertEnabled
+        self.alertFieldActive = self.dnsenabled(from: data[field(.alertFieldActive)] as Any?) ?? self.alertFieldActive
+        self.alertLineActive = self.dnsenabled(from: data[field(.alertLineActive)] as Any?) ?? self.alertLineActive
+        self.alertTitleActive = self.dnsenabled(from: data[field(.alertTitleActive)] as Any?) ?? self.alertTitleActive
+        self.countDown = self.dnsenabled(from: data[field(.countDown)] as Any?) ?? self.countDown
+        self.counterAnimation = self.dnsenabled(from: data[field(.counterAnimation)] as Any?) ?? self.counterAnimation
+        self.counterEnabled = self.dnsenabled(from: data[field(.counterEnabled)] as Any?) ?? self.counterEnabled
+        self.titleAlwaysVisible = self.dnsenabled(from: data[field(.titleAlwaysVisible)] as Any?) ?? self.titleAlwaysVisible
         return self
     }
     override open var asDictionary: DNSDataDictionary {
