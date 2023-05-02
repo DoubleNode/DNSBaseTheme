@@ -24,18 +24,31 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
         initThemesBlocks.forEach { $0() }
     }
 
-    public var subtitleStyle: DNSThemeLabelStyle
-    public var titleStyle: DNSThemeLabelStyle
+    // MARK: - Properties -
+    private func field(_ from: CodingKeys) -> String { return from.rawValue }
+    public enum CodingKeys: String, CodingKey {
+        case subtitleStyle, titleStyle
+    }
 
-    public init(styleName: String?,
-                styleSetName: String? = "",
-                titleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.title,
-                subtitleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.subtitle,
-                backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
-                border: DNSUIBorder = DNSUIBorder.Base.button,
-                shadow: DNSUIShadow = DNSUIShadow.Base.button,
-                skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Button.skeletonable,
-                tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
+    open var subtitleStyle = DNSThemeLabelStyle.Base.default
+    open var titleStyle = DNSThemeLabelStyle.Base.default
+
+    // MARK: - Initializers -
+    required public init() {
+        super.init()
+    }
+    required public init(styleName: String?, styleSetName: String? = "", backgroundColor: DNSUIColor = DNSUIColor.Base.background, border: DNSUIBorder = DNSUIBorder.Base.default, shadow: DNSUIShadow = DNSUIShadow.Base.default, skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable, tintColor: DNSUIColor = DNSUIColor.Base.tint) {
+        fatalError("init(styleName:styleSetName:backgroundColor:border:shadow:skeletonable:tintColor:) has not been implemented")
+    }
+    required public init(styleName: String?,
+                         styleSetName: String? = "",
+                         titleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.title,
+                         subtitleStyle: DNSThemeLabelStyle = DNSThemeLabelStyle.Base.Button.subtitle,
+                         backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
+                         border: DNSUIBorder = DNSUIBorder.Base.button,
+                         shadow: DNSUIShadow = DNSUIShadow.Base.button,
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Button.skeletonable,
+                         tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
         self.titleStyle = titleStyle
         self.subtitleStyle = subtitleStyle
         super.init(styleName: styleName,
@@ -52,5 +65,59 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
             let fullName = "\(setName).\(name)"
             DNSThemeButtonStyle.themeStyles[fullName] = self
         }
+    }
+    
+    // MARK: - DAO copy methods -
+    required public init(from object: DNSThemeButtonStyle) {
+        super.init(from: object)
+        self.update(from: object)
+    }
+    open func update(from object: DNSThemeButtonStyle) {
+        super.update(from: object)
+        // swiftlint:disable force_cast
+        self.subtitleStyle = object.subtitleStyle.copy() as! DNSThemeLabelStyle
+        self.titleStyle = object.titleStyle.copy() as! DNSThemeLabelStyle
+        // swiftlint:enable force_cast
+    }
+
+    // MARK: - DAO translation methods -
+    required public init?(from data: DNSDataDictionary) {
+        guard !data.isEmpty else { return nil }
+        super.init(from: data)
+    }
+    override open func dao(from data: DNSDataDictionary) -> DNSThemeButtonStyle {
+        _ = super.dao(from: data)
+        self.subtitleStyle = self.dnsThemeLabelStyle(from: data[field(.subtitleStyle)] as Any?) ?? self.subtitleStyle
+        self.titleStyle = self.dnsThemeLabelStyle(from: data[field(.titleStyle)] as Any?) ?? self.titleStyle
+        return self
+    }
+    override open var asDictionary: DNSDataDictionary {
+        var retval = super.asDictionary
+        retval.merge([
+            field(.subtitleStyle): self.subtitleStyle.asDictionary,
+            field(.titleStyle): self.titleStyle.asDictionary,
+        ]) { (current, _) in current }
+        return retval
+    }
+
+    // MARK: - NSCopying protocol methods -
+    override open func copy(with zone: NSZone? = nil) -> Any {
+        let copy = DNSThemeButtonStyle(from: self)
+        return copy
+    }
+    override open func isDiffFrom(_ rhs: Any?) -> Bool {
+        guard let rhs = rhs as? DNSThemeButtonStyle else { return true }
+        guard !super.isDiffFrom(rhs) else { return true }
+        let lhs = self
+        return super.isDiffFrom(rhs)
+            || lhs.name != rhs.name
+    }
+
+    // MARK: - Equatable protocol methods -
+    static public func !=(lhs: DNSThemeButtonStyle, rhs: DNSThemeButtonStyle) -> Bool {
+        lhs.isDiffFrom(rhs)
+    }
+    static public func ==(lhs: DNSThemeButtonStyle, rhs: DNSThemeButtonStyle) -> Bool {
+        !lhs.isDiffFrom(rhs)
     }
 }
