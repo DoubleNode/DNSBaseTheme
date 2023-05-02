@@ -80,11 +80,12 @@ open class DNSThemeStyle: DNSDataTranslation, NSCopying {
     open func dao(from data: DNSDataDictionary) -> DNSThemeStyle {
         self.name = self.string(from: data[field(.name)] as Any?) ?? self.name
         self.setName = self.string(from: data[field(.setName)] as Any?) ?? self.setName
-        self.backgroundColor = self.dnsUIColor(from: data[field(.backgroundColor)] as Any?) ?? self.backgroundColor
-        self.border = self.dnsUIBorder(from: data[field(.border)] as Any?) ?? self.border
-        self.shadow = self.dnsUIShadow(from: data[field(.shadow)] as Any?) ?? self.shadow
-        self.skeletonable = self.dnsUIEnabled(from: data[field(.skeletonable)] as Any?) ?? self.skeletonable
-        self.tintColor = self.dnsUIColor(from: data[field(.tintColor)] as Any?) ?? self.tintColor
+        self.backgroundColor = self.dnscolor(from: data[field(.backgroundColor)] as Any?) ?? self.backgroundColor
+        self.border = self.dnsborder(from: data[field(.border)] as Any?) ?? self.border
+        self.shadow = self.dnsshadow(from: data[field(.shadow)] as Any?) ?? self.shadow
+        self.skeletonable = self.dnsenabled(from: data[field(.skeletonable)] as Any?) ?? self.skeletonable
+        self.tintColor = self.dnscolor(from: data[field(.tintColor)] as Any?) ?? self.tintColor
+        self.utilityUpdateCache()
         return self
     }
     open var asDictionary: DNSDataDictionary {
@@ -123,4 +124,7 @@ open class DNSThemeStyle: DNSDataTranslation, NSCopying {
     static public func ==(lhs: DNSThemeStyle, rhs: DNSThemeStyle) -> Bool {
         !lhs.isDiffFrom(rhs)
     }
+    
+    // MARK: - Utility methods -
+    open func utilityUpdateCache() { }
 }

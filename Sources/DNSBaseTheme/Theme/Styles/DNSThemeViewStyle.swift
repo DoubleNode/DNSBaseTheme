@@ -50,13 +50,7 @@ open class DNSThemeViewStyle: DNSThemeStyle {
                    shadow: shadow,
                    skeletonable: skeletonable,
                    tintColor: tintColor)
-        let name = self.name ?? "default"
-        DNSThemeViewStyle.themeStyles[name] = self
-        let setName = self.setName ?? "Base"
-        if !setName.isEmpty {
-            let fullName = "\(setName).\(name)"
-            DNSThemeViewStyle.themeStyles[fullName] = self
-        }
+        self.utilityUpdateCache()
     }
     
     // MARK: - DAO copy methods -
@@ -106,5 +100,16 @@ open class DNSThemeViewStyle: DNSThemeStyle {
     }
     static public func ==(lhs: DNSThemeViewStyle, rhs: DNSThemeViewStyle) -> Bool {
         !lhs.isDiffFrom(rhs)
+    }
+
+    // MARK: - Utility methods -
+    override open func utilityUpdateCache() {
+        let name = self.name ?? "default"
+        DNSThemeViewStyle.themeStyles[name] = self
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeViewStyle.themeStyles[fullName] = self
+        }
     }
 }

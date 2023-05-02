@@ -37,8 +37,23 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
     required public init() {
         super.init()
     }
-    required public init(styleName: String?, styleSetName: String? = "", backgroundColor: DNSUIColor = DNSUIColor.Base.background, border: DNSUIBorder = DNSUIBorder.Base.default, shadow: DNSUIShadow = DNSUIShadow.Base.default, skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable, tintColor: DNSUIColor = DNSUIColor.Base.tint) {
-        fatalError("init(styleName:styleSetName:backgroundColor:border:shadow:skeletonable:tintColor:) has not been implemented")
+    required public init(styleName: String?,
+                         styleSetName: String? = "",
+                         backgroundColor: DNSUIColor = DNSUIColor.Base.Button.background,
+                         border: DNSUIBorder = DNSUIBorder.Base.button,
+                         shadow: DNSUIShadow = DNSUIShadow.Base.button,
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Button.skeletonable,
+                         tintColor: DNSUIColor = DNSUIColor.Base.Button.tint) {
+        self.titleStyle = DNSThemeLabelStyle.Base.Button.title
+        self.subtitleStyle = DNSThemeLabelStyle.Base.Button.subtitle
+        super.init(styleName: styleName,
+                   styleSetName: styleSetName,
+                   backgroundColor: backgroundColor,
+                   border: border,
+                   shadow: shadow,
+                   skeletonable: skeletonable,
+                   tintColor: tintColor)
+        self.utilityUpdateCache()
     }
     required public init(styleName: String?,
                          styleSetName: String? = "",
@@ -58,13 +73,7 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
                    shadow: shadow,
                    skeletonable: skeletonable,
                    tintColor: tintColor)
-        let name = self.name ?? "default"
-        DNSThemeButtonStyle.themeStyles[name] = self
-        let setName = self.setName ?? "Base"
-        if !setName.isEmpty {
-            let fullName = "\(setName).\(name)"
-            DNSThemeButtonStyle.themeStyles[fullName] = self
-        }
+        self.utilityUpdateCache()
     }
     
     // MARK: - DAO copy methods -
@@ -119,5 +128,16 @@ open class DNSThemeButtonStyle: DNSThemeStyle {
     }
     static public func ==(lhs: DNSThemeButtonStyle, rhs: DNSThemeButtonStyle) -> Bool {
         !lhs.isDiffFrom(rhs)
+    }
+
+    // MARK: - Utility methods -
+    override open func utilityUpdateCache() {
+        let name = self.name ?? "default"
+        DNSThemeButtonStyle.themeStyles[name] = self
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeButtonStyle.themeStyles[fullName] = self
+        }
     }
 }

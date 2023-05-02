@@ -20,7 +20,15 @@ public extension DNSDataTranslation {
     }
     func dnsThemeLabelStyle(from data: DNSDataDictionary?) -> DNSThemeLabelStyle? {
         guard let data else { return nil }
-        return DNSThemeLabelStyle(from: data)
+        var baseStyle = DNSThemeLabelStyle.default
+        if let baseStyleName = self.string(from: data["_baseStyle"] as Any?) {
+            // swiftlint:disable:next force_cast
+            baseStyle = DNSThemeLabelStyle.themeStyle(named: baseStyleName) as! DNSThemeLabelStyle
+        }
+        let newStyle = DNSThemeLabelStyle(from: baseStyle)
+        newStyle.setName = "Imported"
+        newStyle.name = UUID().uuidString
+        return newStyle.dao(from: data)
     }
     func dnsThemeLabelStyle(from dnsThemeLabelStyle: DNSThemeLabelStyle?) -> DNSThemeLabelStyle? {
         guard let dnsThemeLabelStyle else { return nil }
