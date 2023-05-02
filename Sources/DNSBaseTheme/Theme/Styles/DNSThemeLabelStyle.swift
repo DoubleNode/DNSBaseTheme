@@ -40,8 +40,32 @@ open class DNSThemeLabelStyle: DNSThemeStyle {
     required public init() {
         super.init()
     }
-    required public init(styleName: String?, styleSetName: String? = "", backgroundColor: DNSUIColor = DNSUIColor.Base.background, border: DNSUIBorder = DNSUIBorder.Base.default, shadow: DNSUIShadow = DNSUIShadow.Base.default, skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable, tintColor: DNSUIColor = DNSUIColor.Base.tint) {
-        fatalError("init(styleName:styleSetName:backgroundColor:border:shadow:skeletonable:tintColor:) has not been implemented")
+    required public init(styleName: String?,
+                         styleSetName: String? = "",
+                         backgroundColor: DNSUIColor = DNSUIColor.Base.Label.background,
+                         border: DNSUIBorder = DNSUIBorder.Base.label,
+                         shadow: DNSUIShadow = DNSUIShadow.Base.Label.text,
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Label.skeletonable,
+                         tintColor: DNSUIColor = DNSUIColor.Base.Label.tint) {
+        self.color = DNSUIColor.Base.Label.text
+        self.font = DNSUIFont.Base.label
+        self.paragraphStyle = NSMutableParagraphStyle()
+        self.strikeThru = DNSUIStrikeThru.Base.Label.strikeThru
+        self.zeplinLineHeight = nil
+        super.init(styleName: styleName,
+                   styleSetName: styleSetName,
+                   backgroundColor: backgroundColor,
+                   border: border,
+                   shadow: shadow,
+                   skeletonable: skeletonable,
+                   tintColor: tintColor)
+        let name = self.name ?? "default"
+        DNSThemeLabelStyle.themeStyles[name] = self
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeLabelStyle.themeStyles[fullName] = self
+        }
     }
     required public init(styleName: String?,
                          styleSetName: String? = "",

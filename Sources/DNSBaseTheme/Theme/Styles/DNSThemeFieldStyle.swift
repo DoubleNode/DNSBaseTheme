@@ -63,8 +63,47 @@ open class DNSThemeFieldStyle: DNSThemeStyle {
     required public init() {
         super.init()
     }
-    required public init(styleName: String?, styleSetName: String? = "", backgroundColor: DNSUIColor = DNSUIColor.Base.background, border: DNSUIBorder = DNSUIBorder.Base.default, shadow: DNSUIShadow = DNSUIShadow.Base.default, skeletonable: DNSUIEnabled = DNSUIEnabled.Base.skeletonable, tintColor: DNSUIColor = DNSUIColor.Base.tint) {
-        fatalError("init(styleName:styleSetName:backgroundColor:border:shadow:skeletonable:tintColor:) has not been implemented")
+    required public init(styleName: String?,
+                         styleSetName: String? = "",
+                         backgroundColor: DNSUIColor = DNSUIColor.Base.Field.background,
+                         border: DNSUIBorder = DNSUIBorder.Base.field,
+                         shadow: DNSUIShadow = DNSUIShadow.Base.field,
+                         skeletonable: DNSUIEnabled = DNSUIEnabled.Base.Field.skeletonable,
+                         tintColor: DNSUIColor = DNSUIColor.Base.Field.tint) {
+        self.alertStyle = DNSThemeLabelStyle.Base.Field.alert
+        self.counterStyle = DNSThemeLabelStyle.Base.Field.counter
+        self.textStyle = DNSThemeLabelStyle.Base.Field.text
+        self.titleStyle = DNSThemeLabelStyle.Base.Field.title
+        self.alertPosition = .bottom
+        self.invalidCharacters = "`^¨"
+        self.lineColor = DNSUIColor.Base.Field.line
+        self.pickerTextColor = DNSUIColor.Base.Field.pickerText
+        self.placeholderColor = DNSUIColor.Base.Field.placeholder
+        self.textFieldHeight = 36.0
+        self.visibleOnImage = UIImage(dnsSymbol: SFSymbol.eye)!
+        self.visibleOffImage = UIImage(dnsSymbol: SFSymbol.Eye.slash)!
+        self.alertEnabled = DNSUIEnabled(true)
+        self.alertFieldActive = DNSUIEnabled(true)
+        self.alertLineActive = DNSUIEnabled(true)
+        self.alertTitleActive = DNSUIEnabled(true)
+        self.countDown = DNSUIEnabled(false)
+        self.counterAnimation = DNSUIEnabled(false)
+        self.counterEnabled = DNSUIEnabled(false)
+        self.titleAlwaysVisible = DNSUIEnabled(false)
+        super.init(styleName: styleName,
+                   styleSetName: styleSetName,
+                   backgroundColor: backgroundColor,
+                   border: border,
+                   shadow: shadow,
+                   skeletonable: skeletonable,
+                   tintColor: tintColor)
+        let name = self.name ?? "default"
+        DNSThemeFieldStyle.themeStyles[name] = self
+        let setName = self.setName ?? "Base"
+        if !setName.isEmpty {
+            let fullName = "\(setName).\(name)"
+            DNSThemeFieldStyle.themeStyles[fullName] = self
+        }
     }
     required public init(styleName: String?,
                          styleSetName: String? = "",
