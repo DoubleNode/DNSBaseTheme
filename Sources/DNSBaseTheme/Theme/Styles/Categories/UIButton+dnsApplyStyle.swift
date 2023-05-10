@@ -11,17 +11,7 @@ import UIKit
 
 public extension UIButton {
     func dnsApply(_ style: DNSThemeButtonStyle) {
-        // DNSThemeStyle
-        self.backgroundColor = style.backgroundColor.normal
-        self.layer.borderColor = style.border.color.normal.cgColor
-        self.layer.borderWidth = CGFloat(style.border.width)
-        self.layer.cornerRadius = CGFloat(style.border.cornerRadius)
-        self.layer.shadowColor = style.shadow.color.normal.cgColor
-        self.layer.shadowOffset = style.shadow.offset
-        self.layer.shadowOpacity = style.shadow.opacity
-        self.layer.shadowRadius = style.shadow.radius
-        self.isSkeletonable = style.skeletonable.normal
-        self.tintColor = style.tintColor.normal
+        super.dnsApply(style as DNSThemeStyle)
         // DNSThemeButtonStyle
         if #available(iOS 15.0, *) {
             self.subtitleLabel?.textColor = style.subtitleStyle.color.normal

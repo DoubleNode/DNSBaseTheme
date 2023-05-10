@@ -300,6 +300,7 @@ import UIKit
             self.backgroundColor = style.backgroundColor.normal
             self.layer.borderColor = style.border.color.normal.cgColor
             self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.isSkeletonable = style.skeletonable.normal
             self.tintColor = style.tintColor.normal
             // DNSThemeViewStyle
         } else {
@@ -307,6 +308,7 @@ import UIKit
             self.backgroundColor = style.backgroundColor.disabled
             self.layer.borderColor = style.border.color.disabled.cgColor
             self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.isSkeletonable = style.skeletonable.disabled
             self.tintColor = style.tintColor.disabled
             // DNSThemeViewStyle
         }
@@ -315,6 +317,7 @@ import UIKit
             self.backgroundColor = style.backgroundColor.selected
             self.layer.borderColor = style.border.color.selected.cgColor
             self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.isSkeletonable = style.skeletonable.selected
             self.tintColor = style.tintColor.selected
             // DNSThemeViewStyle
         }
@@ -323,6 +326,7 @@ import UIKit
             self.backgroundColor = style.backgroundColor.highlighted
             self.layer.borderColor = style.border.color.highlighted.cgColor
             self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.isSkeletonable = style.skeletonable.highlighted
             self.tintColor = style.tintColor.highlighted
             // DNSThemeViewStyle
         }
@@ -331,6 +335,7 @@ import UIKit
             self.backgroundColor = style.backgroundColor.focused
             self.layer.borderColor = style.border.color.focused.cgColor
             self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.isSkeletonable = style.skeletonable.focused
             self.tintColor = style.tintColor.focused
             // DNSThemeViewStyle
         }
