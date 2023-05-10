@@ -82,19 +82,28 @@ import UIKit
     
     public override var isEnabled: Bool {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
+            guard let style = style as? ThemeStyle else {
+                self.updateForState(using: style)
+                return
+            }
             self.updateForState(using: style)
         }
     }
     public override var isHighlighted: Bool {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
+            guard let style = style as? ThemeStyle else {
+                self.updateForState(using: style)
+                return
+            }
             self.updateForState(using: style)
         }
     }
     public var isSelected: Bool = false {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
+            guard let style = style as? ThemeStyle else {
+                self.updateForState(using: style)
+                return
+            }
             self.updateForState(using: style)
         }
     }
@@ -349,56 +358,73 @@ import UIKit
         layer.mask = shape
     }
     
-    func updateForState(using style: ThemeStyle) {
+    func updateForState(using style: DNSThemeStyle) {
         if self.isEnabled {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.normal
             self.layer.borderColor = style.border.color.normal.cgColor
             self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.isSkeletonable = style.skeletonable.normal
             self.tintColor = style.tintColor.normal
-            // DNSThemeLabelStyle
-            self.font = style.font.normal
-            self.shadowColor = style.shadow.color.normal
-            self.textColor = style.color.normal
         } else {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.disabled
             self.layer.borderColor = style.border.color.disabled.cgColor
             self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.isSkeletonable = style.skeletonable.disabled
             self.tintColor = style.tintColor.disabled
-            // DNSThemeLabelStyle
-            self.font = style.font.disabled
-            self.shadowColor = style.shadow.color.disabled
-            self.textColor = style.color.disabled
         }
         if self.isSelected {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.selected
             self.layer.borderColor = style.border.color.selected.cgColor
             self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.isSkeletonable = style.skeletonable.selected
             self.tintColor = style.tintColor.selected
-            // DNSThemeLabelStyle
-            self.font = style.font.selected
-            self.shadowColor = style.shadow.color.selected
-            self.textColor = style.color.selected
         }
         if self.isHighlighted {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.highlighted
             self.layer.borderColor = style.border.color.highlighted.cgColor
             self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.isSkeletonable = style.skeletonable.highlighted
             self.tintColor = style.tintColor.highlighted
-            // DNSThemeLabelStyle
-            self.font = style.font.highlighted
-            self.shadowColor = style.shadow.color.highlighted
-            self.textColor = style.color.highlighted
         }
         if self.isFocused {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.focused
             self.layer.borderColor = style.border.color.focused.cgColor
             self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.isSkeletonable = style.skeletonable.focused
             self.tintColor = style.tintColor.focused
+        }
+    }
+    public func updateForState(using style: ThemeStyle) {
+        self.updateForState(using: style as DNSThemeStyle)
+        if self.isEnabled {
+            // DNSThemeLabelStyle
+            self.font = style.font.normal
+            self.shadowColor = style.shadow.color.normal
+            self.textColor = style.color.normal
+        } else {
+            // DNSThemeLabelStyle
+            self.font = style.font.disabled
+            self.shadowColor = style.shadow.color.disabled
+            self.textColor = style.color.disabled
+        }
+        if self.isSelected {
+            // DNSThemeLabelStyle
+            self.font = style.font.selected
+            self.shadowColor = style.shadow.color.selected
+            self.textColor = style.color.selected
+        }
+        if self.isHighlighted {
+            // DNSThemeLabelStyle
+            self.font = style.font.highlighted
+            self.shadowColor = style.shadow.color.highlighted
+            self.textColor = style.color.highlighted
+        }
+        if self.isFocused {
             // DNSThemeLabelStyle
             self.font = style.font.focused
             self.shadowColor = style.shadow.color.focused
