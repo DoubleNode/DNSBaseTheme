@@ -13,16 +13,20 @@ import UIKit
 
 @IBDesignable open class DNSUICollectionViewCell: UICollectionViewCell {
     public typealias ThemeStyle = DNSThemeViewStyle
+    private var _settingStyleInProgress = false
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
             guard oldValue != style else { return }
+            _settingStyleInProgress = true
             self.styleName = style.fullName
+            _settingStyleInProgress = false
             self.utilityApply(style)
         }
     }
     @IBInspectable open var styleName: String = ThemeStyle.default.fullName {
         didSet {
             guard oldValue != styleName else { return }
+            guard !_settingStyleInProgress else { return }
             self.utilityApply(styleName)
         }
     }
