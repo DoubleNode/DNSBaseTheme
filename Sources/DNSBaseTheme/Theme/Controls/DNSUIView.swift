@@ -50,19 +50,16 @@ import UIKit
 
     public var isEnabled: Bool = true {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public var isHighlighted: Bool = false {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public var isSelected: Bool = false {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
@@ -294,7 +291,7 @@ import UIKit
         layer.mask = shape
     }
 
-    public func updateForState(using style: ThemeStyle) {
+    func updateForState(using style: DNSThemeStyle) {
         if self.isEnabled {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.normal
@@ -302,7 +299,6 @@ import UIKit
             self.layer.shadowColor = style.shadow.color.normal.cgColor
             self.isSkeletonable = style.skeletonable.normal
             self.tintColor = style.tintColor.normal
-            // DNSThemeViewStyle
         } else {
             // DNSThemeStyle
             self.backgroundColor = style.backgroundColor.disabled
@@ -310,7 +306,6 @@ import UIKit
             self.layer.shadowColor = style.shadow.color.disabled.cgColor
             self.isSkeletonable = style.skeletonable.disabled
             self.tintColor = style.tintColor.disabled
-            // DNSThemeViewStyle
         }
         if self.isSelected {
             // DNSThemeStyle
@@ -319,7 +314,6 @@ import UIKit
             self.layer.shadowColor = style.shadow.color.selected.cgColor
             self.isSkeletonable = style.skeletonable.selected
             self.tintColor = style.tintColor.selected
-            // DNSThemeViewStyle
         }
         if self.isHighlighted {
             // DNSThemeStyle
@@ -328,7 +322,6 @@ import UIKit
             self.layer.shadowColor = style.shadow.color.highlighted.cgColor
             self.isSkeletonable = style.skeletonable.highlighted
             self.tintColor = style.tintColor.highlighted
-            // DNSThemeViewStyle
         }
         if self.isFocused {
             // DNSThemeStyle
@@ -337,6 +330,22 @@ import UIKit
             self.layer.shadowColor = style.shadow.color.focused.cgColor
             self.isSkeletonable = style.skeletonable.focused
             self.tintColor = style.tintColor.focused
+        }
+    }
+    public func updateForState(using style: ThemeStyle) {
+        self.updateForState(using: style as DNSThemeStyle)
+        if self.isEnabled {
+            // DNSThemeViewStyle
+        } else {
+            // DNSThemeViewStyle
+        }
+        if self.isSelected {
+            // DNSThemeViewStyle
+        }
+        if self.isHighlighted {
+            // DNSThemeViewStyle
+        }
+        if self.isFocused {
             // DNSThemeViewStyle
         }
     }

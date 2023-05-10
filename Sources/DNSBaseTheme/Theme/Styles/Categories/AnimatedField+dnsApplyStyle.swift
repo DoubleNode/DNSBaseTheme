@@ -42,7 +42,49 @@ public extension AnimatedField {
         newFormat.textFieldHeight = style.textFieldHeight
         self.format = newFormat
     }
+    func updateForState(using style: DNSThemeStyle) {
+        if self.isEnabled {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.normal
+            self.layer.borderColor = style.border.color.normal.cgColor
+            self.layer.shadowColor = style.shadow.color.normal.cgColor
+            self.isSkeletonable = style.skeletonable.normal
+            self.tintColor = style.tintColor.normal
+        } else {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.disabled
+            self.layer.borderColor = style.border.color.disabled.cgColor
+            self.layer.shadowColor = style.shadow.color.disabled.cgColor
+            self.isSkeletonable = style.skeletonable.disabled
+            self.tintColor = style.tintColor.disabled
+        }
+        if self.isSelected {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.selected
+            self.layer.borderColor = style.border.color.selected.cgColor
+            self.layer.shadowColor = style.shadow.color.selected.cgColor
+            self.isSkeletonable = style.skeletonable.selected
+            self.tintColor = style.tintColor.selected
+        }
+        if self.isHighlighted {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.highlighted
+            self.layer.borderColor = style.border.color.highlighted.cgColor
+            self.layer.shadowColor = style.shadow.color.highlighted.cgColor
+            self.isSkeletonable = style.skeletonable.highlighted
+            self.tintColor = style.tintColor.highlighted
+        }
+        if self.isFocused {
+            // DNSThemeStyle
+            self.backgroundColor = style.backgroundColor.focused
+            self.layer.borderColor = style.border.color.focused.cgColor
+            self.layer.shadowColor = style.shadow.color.focused.cgColor
+            self.isSkeletonable = style.skeletonable.focused
+            self.tintColor = style.tintColor.focused
+        }
+    }
     func updateForState(using style: DNSThemeFieldStyle) {
+        self.updateForState(using: style as DNSThemeStyle)
         var newFormat = self.format
         newFormat.invalidCharacters = style.invalidCharacters
         newFormat.alertPosition = style.alertPosition
@@ -52,12 +94,6 @@ public extension AnimatedField {
         newFormat.placeholderColor = style.placeholderColor.normal
         newFormat.textFieldHeight = style.textFieldHeight
         if self.isEnabled {
-            // DNSThemeStyle
-            self.backgroundColor = style.backgroundColor.normal
-            self.layer.borderColor = style.border.color.normal.cgColor
-            self.layer.shadowColor = style.shadow.color.normal.cgColor
-            self.isSkeletonable = style.skeletonable.normal
-            self.tintColor = style.tintColor.normal
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.normal
             newFormat.titleFont = style.titleStyle.font.normal
@@ -78,12 +114,6 @@ public extension AnimatedField {
             newFormat.countDown = style.countDown.normal
             newFormat.counterAnimation = style.counterAnimation.normal
         } else {
-            // DNSThemeStyle
-            self.backgroundColor = style.backgroundColor.disabled
-            self.layer.borderColor = style.border.color.disabled.cgColor
-            self.layer.shadowColor = style.shadow.color.disabled.cgColor
-            self.isSkeletonable = style.skeletonable.disabled
-            self.tintColor = style.tintColor.disabled
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.disabled
             newFormat.titleFont = style.titleStyle.font.disabled
@@ -105,12 +135,6 @@ public extension AnimatedField {
             newFormat.counterAnimation = style.counterAnimation.disabled
         }
         if self.isSelected {
-            // DNSThemeStyle
-            self.backgroundColor = style.backgroundColor.selected
-            self.layer.borderColor = style.border.color.selected.cgColor
-            self.layer.shadowColor = style.shadow.color.selected.cgColor
-            self.isSkeletonable = style.skeletonable.selected
-            self.tintColor = style.tintColor.selected
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.selected
             newFormat.titleFont = style.titleStyle.font.selected
@@ -132,12 +156,6 @@ public extension AnimatedField {
             newFormat.counterAnimation = style.counterAnimation.selected
         }
         if self.isHighlighted {
-            // DNSThemeStyle
-            self.backgroundColor = style.backgroundColor.highlighted
-            self.layer.borderColor = style.border.color.highlighted.cgColor
-            self.layer.shadowColor = style.shadow.color.highlighted.cgColor
-            self.isSkeletonable = style.skeletonable.highlighted
-            self.tintColor = style.tintColor.highlighted
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.highlighted
             newFormat.titleFont = style.titleStyle.font.highlighted
@@ -159,12 +177,6 @@ public extension AnimatedField {
             newFormat.counterAnimation = style.counterAnimation.highlighted
         }
         if self.isFocused {
-            // DNSThemeStyle
-            self.backgroundColor = style.backgroundColor.focused
-            self.layer.borderColor = style.border.color.focused.cgColor
-            self.layer.shadowColor = style.shadow.color.focused.cgColor
-            self.isSkeletonable = style.skeletonable.focused
-            self.tintColor = style.tintColor.focused
             // DNSThemeFieldStyle
             newFormat.titleAlwaysVisible = style.titleAlwaysVisible.focused
             newFormat.titleFont = style.titleStyle.font.focused

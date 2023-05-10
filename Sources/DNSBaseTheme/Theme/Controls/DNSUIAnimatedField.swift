@@ -55,19 +55,16 @@ import UIKit
 
     public override var isEnabled: Bool {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public override var isHighlighted: Bool {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
     public override var isSelected: Bool {
         didSet {
-            guard let style = style as? ThemeStyle else { return }
             self.updateForState(using: style)
         }
     }
