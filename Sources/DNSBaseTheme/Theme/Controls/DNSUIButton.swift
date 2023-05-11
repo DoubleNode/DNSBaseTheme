@@ -211,7 +211,7 @@ import UIKit
         refreshViewLayout()
     }
     func setupView() {
-        self.backgroundColor = self.backgroundColor
+        self.backgroundColor = self.containerView.backgroundColor
         self.clipsToBounds = self.clipsToBounds
         self.borderColor = self.borderColor
         self.borderWidth = self.borderWidth
@@ -280,9 +280,11 @@ import UIKit
     
     private func addViewLayoutSubViews() {
         // add subViews
+        self.containerView.backgroundColor = UIColor.clear
         self.insertSubview(self.containerView, at: 0)
         self.sendSubviewToBack(self.containerView)
         self.containerView.addSubview(self.containerImageView)
+        self.backgroundColor = UIColor.systemBackground
 
         self.containerView.isUserInteractionEnabled = false
         self.containerImageView.isUserInteractionEnabled = false
@@ -301,7 +303,6 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-    
 //    private func addShadowColorFromBackgroundImage() {
 //        // Get the averageColor from the image for set the Shadow Color
 //        if shadowColorFormImage {
