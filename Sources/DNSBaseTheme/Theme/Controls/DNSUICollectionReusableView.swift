@@ -278,6 +278,7 @@ import UIKit
     }
     private func addViewLayoutSubViews() {
         // add subViews
+        self.containerView.backgroundColor = nil
         self.insertSubview(self.containerView, at: 0)
         self.sendSubviewToBack(self.containerView)
         self.containerView.addSubview(self.containerImageView)

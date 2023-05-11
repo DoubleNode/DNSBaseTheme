@@ -266,6 +266,7 @@ import UIKit
     }
     private func addViewLayoutSubViews() {
         // add subViews
+        self.containerView.backgroundColor = nil
         self.insertSubview(self.containerView, at: 0)
         self.sendSubviewToBack(self.containerView)
         self.containerView.addSubview(self.containerImageView)
@@ -287,15 +288,15 @@ import UIKit
         self.containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-    //    private func addShadowColorFromBackgroundImage() {
-    //        // Get the averageColor from the image for set the Shadow Color
-    //        if shadowColorFormImage {
-    //            let week = self
-    //            DispatchQueue.main.async {
-    //                week.shadowColor = (week.containerImageView.image?.averageColor)!
-    //            }
-    //        }
-    //    }
+//    private func addShadowColorFromBackgroundImage() {
+//        // Get the averageColor from the image for set the Shadow Color
+//        if shadowColorFormImage {
+//            let week = self
+//            DispatchQueue.main.async {
+//                week.shadowColor = (week.containerImageView.image?.averageColor)!
+//            }
+//        }
+//    }
     private func applyRadiusMaskFor() {
         guard cornerRadiusMulti else { return }
         
