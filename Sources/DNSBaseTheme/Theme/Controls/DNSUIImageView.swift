@@ -16,7 +16,7 @@ import UIKit
     private var _settingStyleInProgress = false
     public var style: DNSThemeStyle = ThemeStyle.default {
         didSet {
-            guard oldValue != style else { return }
+//            guard oldValue != style else { return }
             _settingStyleInProgress = true
             self.styleName = style.fullName
             _settingStyleInProgress = false
