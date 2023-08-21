@@ -20,9 +20,9 @@ DNSBaseTheme is a collection of base UI theme classes used for the DNSFramework
 
 ## Requirements
 
--   iOS 13.0+ / macOS 10.15+ / tvOS 13.0+ / watchOS 6.0+
--   Xcode 11.6+
--   Swift 5.1+
+-   iOS 16.0+ / macOS 13.3+ / tvOS 16.4+ / watchOS 9.4+
+-   Xcode 14.3.1+
+-   Swift 5.8+
 
 ## Installation
 
@@ -34,7 +34,7 @@ Once you have your Swift package set up, adding Alamofire as a dependency is as 
 
 ```swift
 dependencies: [
-.package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.10.28")
+.package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.11.0")
 ]
 ```
 
@@ -42,8 +42,8 @@ dependencies: [
 
 -   ActiveLabel v1.1.5+
 -   AlamofireImage v4.2.0+
--   AnimatedField v2.5.49+
--   DNSCore v1.10.48+
+-   AnimatedField v2.5.50+
+-   DNSCore v1.11.0+
 -   SkeletonView v1.30.4+
 -   SwipeCellKit v2.7.1+
 
